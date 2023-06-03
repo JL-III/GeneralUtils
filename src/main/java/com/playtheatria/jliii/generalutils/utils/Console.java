@@ -19,7 +19,4 @@ public class Console {
         console.sendMessage(pluginPrefix.append(Component.text(message, NamedTextColor.YELLOW)));
     }
 
-    public static void sendResponse(Player player, String message, Status status) {
-        player.sendMessage(Component.text(message, status.getColor()));
-    }
 }
