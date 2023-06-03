@@ -1,12 +1,11 @@
 package com.playtheatria.jliii.generalutils.utils;
 
-import com.playtheatria.jliii.generalutils.enums.Status;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+
 
 public class Console {
     private static TextComponent pluginPrefix = Component.text()
