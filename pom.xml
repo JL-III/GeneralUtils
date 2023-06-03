@@ -4,7 +4,7 @@
 
     <groupId>com.playtheatria.jl-iii</groupId>
     <artifactId>GeneralUtils</artifactId>
-    <version>1.0.3</version>
+    <version>0.0.1-alpha-1</version>
     <packaging>jar</packaging>
 
     <name>GeneralUtils</name>
@@ -13,12 +13,6 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <scm>
-        <connection>scm:git:git://github.com/JL-III/GeneralUtils.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/JL-III/GeneralUtils.git</developerConnection>
-        <url>http://github.com/JL-III/GeneralUtils</url>
-      <tag>GeneralUtils-1.0.3</tag>
-  </scm>
     <build>
         <plugins>
             <plugin>
@@ -45,14 +39,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.1</version>
-                <configuration>
-                    <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
