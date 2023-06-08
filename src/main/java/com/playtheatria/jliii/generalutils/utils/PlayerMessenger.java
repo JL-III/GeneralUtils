@@ -13,4 +13,9 @@ public class PlayerMessenger {
     public void sendActionBar(Player player, String title, Status status) {
         player.sendActionBar(Component.text(title, status.getColor()));
     }
+
+    public void sendMessage(Player player, String message) {
+        player.sendMessage(Component.text(message));
+    }
+
 }
