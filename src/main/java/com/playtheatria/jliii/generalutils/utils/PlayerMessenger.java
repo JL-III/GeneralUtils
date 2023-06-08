@@ -4,12 +4,13 @@ import com.playtheatria.jliii.generalutils.enums.Status;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
-public class PlayerMessage {
-    public static void sendResponse(Player player, String message, Status status) {
+public class PlayerMessenger {
+
+    public void sendResponse(Player player, String message, Status status) {
         player.sendMessage(Component.text(message, status.getColor()));
     }
 
-    public static void sendActionBar(Player player, String title, Status status) {
+    public void sendActionBar(Player player, String title, Status status) {
         player.sendActionBar(Component.text(title, status.getColor()));
     }
 }

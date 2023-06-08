@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 
 public class CustomLogger {
     private TextComponent loggerPrefix;
+
     public CustomLogger(String pluginName, NamedTextColor brackets, NamedTextColor pluginNameColor) {
         loggerPrefix = Component.text()
                 .build()
