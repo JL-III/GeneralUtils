@@ -1,5 +1,6 @@
 package com.playtheatria.jliii.generalutils;
 
+import com.playtheatria.jliii.generalutils.items.ItemCreator;
 import com.playtheatria.jliii.generalutils.managers.CommandManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
@@ -10,9 +11,11 @@ public final class GeneralUtils extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.saveDefaultConfig();
         PlayerMessenger playerMessenger = new PlayerMessenger();
         CustomLogger customLogger = new CustomLogger(getName(), NamedTextColor.GREEN, NamedTextColor.YELLOW);
         new CommandManager(this, customLogger, playerMessenger);
+        new ItemCreator(this, customLogger);
     }
 
 }
