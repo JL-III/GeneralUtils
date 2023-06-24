@@ -28,12 +28,10 @@ To use GeneralUtils in your projects, follow these steps:
 For Maven, add the following in your `pom.xml`:
 
 ```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
 ```
 2. Add the GeneralUtils dependency to your project.
 ```xml
