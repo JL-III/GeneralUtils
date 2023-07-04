@@ -1,6 +1,7 @@
 package com.playtheatria.jliii.generalutils.items;
 
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,12 +13,12 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class ItemCreator {
 
-    private FileConfiguration fileConfiguration;
-    private CustomLogger customLogger;
+    private static FileConfiguration fileConfiguration;
     public static ItemStack powerCrystalCommon;
     public static ItemStack powerCrystalUncommon;
     public static ItemStack powerCrystalSuper;
@@ -44,9 +45,8 @@ public class ItemCreator {
     public static ItemStack titanSwordBlue;
     public static ItemStack titanRodRed;
 
-    public ItemCreator(Plugin plugin, CustomLogger customLogger) {
-        fileConfiguration = plugin.getConfig();
-        this.customLogger = customLogger;
+    static {
+        fileConfiguration = Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("GeneralUtils")).getConfig();
         titanPickRedFortune = (ItemStack) fileConfiguration.get("titanpickredfortune");
         titanPickRedSilk = (ItemStack) fileConfiguration.get("titanpickredsilk");
         titanPickYellowFortune = (ItemStack) fileConfiguration.get("titanpickyellowfortune");
@@ -61,10 +61,6 @@ public class ItemCreator {
         titanSwordYellow = (ItemStack) fileConfiguration.get("titanswordyellow");
         titanSwordBlue = (ItemStack) fileConfiguration.get("titanswordblue");
         titanRodRed = (ItemStack) fileConfiguration.get("titanrodred");
-        Init(customLogger);
-    }
-
-    public static void Init(CustomLogger customLogger){
         createPowerCrystalCommon();
         createPowerCrystalUncommon();
         createPowerCrystalSuper();
@@ -76,7 +72,6 @@ public class ItemCreator {
         createEtherealFragment();
         createChristmasPick();
         createGingerbreadMan();
-        customLogger.sendLog("Items have been initialized.");
     }
 
     public static void createPowerCrystalCommon() {

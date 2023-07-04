@@ -1,5 +1,6 @@
 package com.playtheatria.jliii.generalutils.commands;
 
+import com.playtheatria.jliii.generalutils.GeneralUtils;
 import com.playtheatria.jliii.generalutils.enums.Status;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import org.bukkit.command.Command;
@@ -14,10 +15,10 @@ import java.util.List;
 
 public class AdminCommands implements CommandExecutor {
 
-    private Plugin plugin;
+    private GeneralUtils plugin;
     private PlayerMessenger playerMessenger;
 
-    public AdminCommands(Plugin plugin, PlayerMessenger playerMessenger) {
+    public AdminCommands(GeneralUtils plugin, PlayerMessenger playerMessenger) {
         this.plugin = plugin;
         this.playerMessenger = playerMessenger;
     }
@@ -34,6 +35,11 @@ public class AdminCommands implements CommandExecutor {
         }
 
         if (args.length == 0) return false;
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("version")) {
+            plugin.getCustomLogger().sendLog("GeneralUtils version " + plugin.getDescription().getVersion());
+            return true;
+        }
 
         if (args.length == 1 && args[0].equalsIgnoreCase("tasks")) {
             playerMessenger.sendResponse(player, "Tasks found.", Status.VALID);
