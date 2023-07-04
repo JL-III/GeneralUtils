@@ -35,7 +35,7 @@ public final class GeneralUtils extends JavaPlugin {
         } catch (IOException e) {
             return ChatColor.RED + "No generalutils.properties found, was this set up?";
         }
-        String dependencyVersion = properties.getProperty("version.properties");
+        String dependencyVersion = properties.getProperty("generalutils.version");
         if (dependencyVersion != null) {
             return ChatColor.GREEN + "GeneralUtils version: " + dependencyVersion;
         } else {
