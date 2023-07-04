@@ -5,8 +5,6 @@ import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -37,7 +35,7 @@ public final class GeneralUtils extends JavaPlugin {
         } catch (IOException e) {
             return ChatColor.RED + "No generalutils.properties found, was this set up?";
         }
-        String dependencyVersion = properties.getProperty("generalutils.version");
+        String dependencyVersion = properties.getProperty("version.properties");
         if (dependencyVersion != null) {
             return ChatColor.GREEN + "GeneralUtils version: " + dependencyVersion;
         } else {
