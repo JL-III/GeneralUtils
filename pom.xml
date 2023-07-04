@@ -4,7 +4,7 @@
 
     <groupId>com.playtheatria.jl-iii</groupId>
     <artifactId>GeneralUtils</artifactId>
-    <version>v1.0.2-alpha-6</version>
+    <version>${generalutils.version}</version>
     <packaging>jar</packaging>
 
     <name>GeneralUtils</name>
@@ -12,6 +12,7 @@
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <generalutils.version>v1.0.2-alpha-6</generalutils.version>
     </properties>
     <build>
         <plugins>

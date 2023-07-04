@@ -4,7 +4,13 @@ import com.playtheatria.jliii.generalutils.managers.CommandManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
+import java.util.Properties;
 
 public final class GeneralUtils extends JavaPlugin {
 
@@ -24,4 +30,18 @@ public final class GeneralUtils extends JavaPlugin {
         return customLogger;
     }
 
+    public static String getVersion() {
+        Properties properties = new Properties();
+        try {
+            properties.load(GeneralUtils.class.getResourceAsStream("/version.properties"));
+        } catch (IOException e) {
+            return ChatColor.RED + "No generalutils.properties found, was this set up?";
+        }
+        String dependencyVersion = properties.getProperty("generalutils.version");
+        if (dependencyVersion != null) {
+            return ChatColor.GREEN + "GeneralUtils version: " + dependencyVersion;
+        } else {
+            return ChatColor.RED + "No version information was found";
+        }
+    }
 }
