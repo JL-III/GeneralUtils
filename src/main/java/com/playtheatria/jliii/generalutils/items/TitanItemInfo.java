@@ -19,7 +19,6 @@ public class TitanItemInfo {
     public static final String ANCIENT_CHARGE_BLUE = "§8Charge:§x§6§D§5§E§F§F";
 
     public static final String CHARGE_STRING = "§8Charge: ";
-
     public static final String ANCIENT_CHARGE_STRING_LITERAL = "§x§c§1§0§0§8§bA§x§c§6§0§0§8§6n§x§c§b§0§0§8§1c§x§d§1§0§0§7§bi§x§d§6§0§0§7§6e§x§d§b§0§0§7§1n§x§e§0§0§0§6§ct §x§e§5§0§0§6§6C§x§e§a§0§0§6§1h§x§f§0§0§0§5§ca§x§f§5§0§0§5§7r§x§f§a§0§0§5§1g§x§f§f§0§0§4§ce ";
     public static final String ANCIENT_DEPLETED = " ";
 
@@ -307,6 +306,13 @@ public class TitanItemInfo {
             add(Material.NETHERITE_SHOVEL);
         }
     };
+
+    public static boolean hasCharge(ItemStack item) {
+        for (String string : item.getLore()) {
+            if (string.contains(CHARGE_STRING)) return true;
+        }
+        return false;
+    }
 
     public static boolean isAllowedTitanType(ItemStack item){
         if (item == null) return false;
