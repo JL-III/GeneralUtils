@@ -1,5 +1,6 @@
 package com.playtheatria.jliii.generalutils;
 
+import com.playtheatria.jliii.generalutils.items.ItemCreator;
 import com.playtheatria.jliii.generalutils.managers.CommandManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
@@ -19,9 +20,8 @@ public final class GeneralUtils extends JavaPlugin {
         this.saveDefaultConfig();
         PlayerMessenger playerMessenger = new PlayerMessenger();
         customLogger = new CustomLogger(getName(), NamedTextColor.GREEN, NamedTextColor.YELLOW);
-//        Bukkit.getPluginManager().registerEvents(new Portal(customLogger), this);
         new CommandManager(this, customLogger, playerMessenger);
-//        new ItemCreator(this, customLogger);
+//        new ItemCreator();
     }
 
     public CustomLogger getCustomLogger() {

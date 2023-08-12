@@ -28,6 +28,7 @@ public class TitanItemInfo {
     public static final String BLUE = "§x§6§D§5§E§F§F";
 
     public static final String CHARGED = " ♆";
+    public static final String IMBUED = " Ω";
 
     public static final String CHARGED_INACTIVE = "§8Ancient Power ♆";
     public static final String IMBUED_INACTIVE = "§8Ancient Power Ω";
@@ -284,7 +285,7 @@ public class TitanItemInfo {
         }
     };
 
-    public static final List<Enum> ALLOWED_TITAN_TYPES = new ArrayList<>() {
+    public static final List<Material> ALLOWED_TITAN_TYPES = new ArrayList<>() {
         {
             add(Material.DIAMOND_PICKAXE);
             add(Material.NETHERITE_PICKAXE);
@@ -293,14 +294,14 @@ public class TitanItemInfo {
         }
     };
 
-    public static final List<Enum> ALLOWED_PICK_TYPES = new ArrayList<>(){
+    public static final List<Material> ALLOWED_PICK_TYPES = new ArrayList<>(){
         {
             add(Material.DIAMOND_PICKAXE);
             add(Material.NETHERITE_PICKAXE);
         }
     };
 
-    public static final List<Enum> ALLOWED_SHOVEL_TYPES = new ArrayList<>(){
+    public static final List<Material> ALLOWED_SHOVEL_TYPES = new ArrayList<>(){
         {
             add(Material.DIAMOND_SHOVEL);
             add(Material.NETHERITE_SHOVEL);
@@ -498,7 +499,6 @@ public class TitanItemInfo {
     }
 
     public static int getAncientPowerLoreIndex(List<String> loreList) {
-//     Bukkit.getServer().getConsoleSender().sendMessage("inside of getAncientPowerLoreIndex");
         for (int i = 0; i < loreList.size(); i++){
             if (TITAN_LORE.contains(loreList.get(i))) return i;
         }
