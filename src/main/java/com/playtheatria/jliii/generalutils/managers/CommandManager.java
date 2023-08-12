@@ -2,6 +2,7 @@ package com.playtheatria.jliii.generalutils.managers;
 
 import com.playtheatria.jliii.generalutils.GeneralUtils;
 import com.playtheatria.jliii.generalutils.commands.AdminCommands;
+import com.playtheatria.jliii.generalutils.commands.KitCommands;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 
@@ -22,7 +23,7 @@ public class CommandManager {
 
     private void registerCommands() {
         Objects.requireNonNull(plugin.getServer().getPluginCommand("gu")).setExecutor(new AdminCommands(plugin, playerMessenger));
-//        Objects.requireNonNull(plugin.getServer().getPluginCommand("tkit")).setExecutor(new KitCommands(customLogger));
+        Objects.requireNonNull(plugin.getServer().getPluginCommand("tkit")).setExecutor(new KitCommands(customLogger));
         customLogger.sendLog("Registered commands.");
     }
 
