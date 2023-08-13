@@ -556,7 +556,7 @@ public class TitanItemInfo {
     }
 
     public static boolean isChargedOrImbuedTitanAxe(ItemStack item) {
-        if(!isTitanPick(item)) return false;
+        if(!isTitanAxe(item)) return false;
         return (isImbued(item) || isCharged(item));
     }
 
