@@ -290,6 +290,8 @@ public class TitanItemInfo {
             add(Material.NETHERITE_PICKAXE);
             add(Material.DIAMOND_SHOVEL);
             add(Material.NETHERITE_SHOVEL);
+            add(Material.DIAMOND_AXE);
+            add(Material.NETHERITE_AXE);
         }
     };
 
