@@ -300,6 +300,13 @@ public class TitanItemInfo {
         }
     };
 
+    public static final List<Material> ALLOWED_AXE_TYPES = new ArrayList<>(){
+        {
+            add(Material.DIAMOND_AXE);
+            add(Material.NETHERITE_AXE);
+        }
+    };
+
     public static final List<Material> ALLOWED_SHOVEL_TYPES = new ArrayList<>(){
         {
             add(Material.DIAMOND_SHOVEL);
@@ -322,6 +329,11 @@ public class TitanItemInfo {
     public static boolean isAllowedPickType(ItemStack item){
         if (item == null) return false;
         return (ALLOWED_PICK_TYPES.contains(item.getType()));
+    }
+
+    public static boolean isAllowedAxeType(ItemStack item){
+        if (item == null) return false;
+        return (ALLOWED_AXE_TYPES.contains(item.getType()));
     }
 
     public static boolean isAllowedShovelType(ItemStack item){
@@ -527,11 +539,21 @@ public class TitanItemInfo {
                 && isAllowedPickType(item);
     }
 
+    public static boolean isTitanAxe(ItemStack item) {
+        return isTitanTool(item)
+                && isAllowedAxeType(item);
+    }
+
     public static boolean isTitanShovel(ItemStack item) {
         return isTitanTool(item) && isAllowedShovelType(item);
     }
 
     public static boolean isChargedOrImbuedTitanPick(ItemStack item) {
+        if(!isTitanPick(item)) return false;
+        return (isImbued(item) || isCharged(item));
+    }
+
+    public static boolean isChargedOrImbuedTitanAxe(ItemStack item) {
         if(!isTitanPick(item)) return false;
         return (isImbued(item) || isCharged(item));
     }
