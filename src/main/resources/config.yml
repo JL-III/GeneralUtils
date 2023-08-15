@@ -57,11 +57,14 @@ titanpickredfortune:
       - '{"extra":[{"color":"dark_gray","text":"Efficiency"},{"color":"#FF0000","text":" IX"}],"text":""}'
       - '{"extra":[{"color":"dark_gray","text":"Fortune"},{"color":"#FF0000","text":" III"}],"text":""}'
       - '{"extra":[{"color":"dark_gray","text":"Unbreakable"}],"text":""}'
-      - '{"extra":[{"color":"dark_gray","text":"Ancient Power"},{"color":"#FF0000","text":" ♆"}],"text":""}'
+      - '{"extra":[{"color":"gray","text":""}],"text":""}'
+      - '{"extra":[{"color":"#7F0000","text":"Ancient Power"},{"color":"#FF0000","text":" ♆"}],"text":""}'
+      - '{"extra":[{"color":"#7F0000","text":"  ● Charge"},{"color":"#FF0000","text":" 0"}],"text":""}'
+      - '{"extra":[{"color":"#7F0000","text":"  ● Status"},{"color":"#FF0000","text":" OFF"}],"text":""}'
       - '{"extra":[{"color":"gray","text":""}],"text":""}'
       - '{"extra":[
     {"color":"#7F0000","text":"A"},
-    {"color":"#880001","text":" R"},
+    {"color":"#880001","text":" r"},
     {"color":"#900002","text":"e"},
     {"color":"#990003","text":"l"},
     {"color":"#A20004","text":"i"},
@@ -86,45 +89,14 @@ titanpickredfortune:
     {"color":"#C20004","text":"t"},
     {"color":"#CC0003","text":"."},
     {"color":"#D60003","text":"."},
-    {"color":"#E00002","text":"."},
-    {"color":"#EA0002","text":" t"},
-    {"color":"#F50001","text":"h"},
-    {"color":"#FF0000","text":"i"},
-    {"color":"#FF0000","text":"s"}],"text":""}'
-      - '{"extra":[
-    {"color":"#7F0000","text":"t"},
-    {"color":"#870001","text":"o"},
-    {"color":"#8E0002","text":"o"},
-    {"color":"#960003","text":"l"},
-    {"color":"#9D0003","text":" i"},
-    {"color":"#A50004","text":"s"},
-    {"color":"#AD0004","text":" u"},
-    {"color":"#B50004","text":"n"},
-    {"color":"#BD0004","text":"n"},
-    {"color":"#C50003","text":"a"},
-    {"color":"#CD0003","text":"t"},
-    {"color":"#D50003","text":"u"},
-    {"color":"#DE0003","text":"r"},
-    {"color":"#E60002","text":"a"},
-    {"color":"#EE0001","text":"l"},
-    {"color":"#F70001","text":"l"},
-    {"color":"#FF0000","text":"y"}],"text":""}'
-      - '{"extra":[
-    {"color":"#7F0000","text":"p"},
-    {"color":"#8E0002","text":"o"},
-    {"color":"#9D0003","text":"w"},
-    {"color":"#AD0004","text":"e"},
-    {"color":"#BD0004","text":"r"},
-    {"color":"#CD0003","text":"f"},
-    {"color":"#DE0003","text":"u"},
-    {"color":"#EE0001","text":"l"},
-    {"color":"#FF0000","text":"."}],"text":""}'
+    {"color":"#E00002","text":"."}],"text":""}'
     custom-model-data: 1000006
     enchants:
       DIG_SPEED: 9
       LOOT_BONUS_BLOCKS: 3
     ItemFlags:
       - HIDE_ENCHANTS
+      - HIDE_ATTRIBUTES
 titanpickredsilk:
   ==: org.bukkit.inventory.ItemStack
   v: 3105
