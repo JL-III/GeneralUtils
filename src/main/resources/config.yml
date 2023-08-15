@@ -34,47 +34,95 @@ titanAxe:
 
 titanpickredfortune:
   ==: org.bukkit.inventory.ItemStack
-  v: 3105
+  v: 3465
   type: DIAMOND_PICKAXE
   meta:
     ==: ItemMeta
     meta-type: UNSPECIFIC
-    display-name: '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":true,"color":"#7F0000","text":"
-      %"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#880001","text":"
-      T"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#920002","text":"h"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#9B0003","text":"e"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#A50004","text":"
-      T"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#AE0004","text":"i"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#B80004","text":"t"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#C20004","text":"a"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#CC0003","text":"n"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#D60003","text":"
-      P"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#E00002","text":"i"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#EA0002","text":"c"},{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#F50001","text":"k"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":true,"color":"#FF0000","text":"
-      %"}],"text":""}'
+    display-name: '{"extra":[{"obfuscated":true,"color":"#7F0000","text":" %"},
+    {"bold":true,"color":"#880001","text":" T"},
+    {"bold":true,"color":"#920002","text":"h"},
+    {"bold":true,"color":"#9B0003","text":"e"},
+    {"bold":true,"color":"#A50004","text":" T"},
+    {"bold":true,"color":"#AE0004","text":"i"},
+    {"bold":true,"color":"#B80004","text":"t"},
+    {"bold":true,"color":"#C20004","text":"a"},
+    {"bold":true,"color":"#CC0003","text":"n"},
+    {"bold":true,"color":"#D60003","text":" P"},
+    {"bold":true,"color":"#E00002","text":"i"},
+    {"bold":true,"color":"#EA0002","text":"c"},
+    {"bold":true,"color":"#F50001","text":"k"},
+    {"obfuscated":true,"color":"#FF0000","text":" %"}],"text":""}'
     lore:
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_gray","text":"Efficiency"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"
-      IX"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_gray","text":"Fortune"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"
-      III"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_gray","text":"Unbreaking"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"
-      V"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_gray","text":"Mending"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":""}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_gray","text":"Ancient
-      Power"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"
-      ♆"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gray","text":""}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#7F0000","text":"A"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#880001","text":"
-      R"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#900002","text":"e"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#990003","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#A20004","text":"i"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#AB0004","text":"c"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#B40004","text":"
-      f"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#BD0004","text":"r"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#C60003","text":"o"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#D00003","text":"m"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#D90003","text":"
-      a"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#E20002","text":"
-      t"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#EC0002","text":"i"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#F50001","text":"m"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"e"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#7F0000","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#880001","text":"o"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#920002","text":"n"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#9B0003","text":"g"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#A50004","text":"
-      p"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#AE0004","text":"a"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#B80004","text":"s"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#C20004","text":"t"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#CC0003","text":"."},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#D60003","text":"."},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#E00002","text":"."},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#EA0002","text":"
-      t"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#F50001","text":"h"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"i"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"s"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#7F0000","text":"t"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#870001","text":"o"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#8E0002","text":"o"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#960003","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#9D0003","text":"
-      i"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#A50004","text":"s"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#AD0004","text":"
-      u"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#B50004","text":"n"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#BD0004","text":"n"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#C50003","text":"a"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#CD0003","text":"t"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#D50003","text":"u"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#DE0003","text":"r"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#E60002","text":"a"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#EE0001","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#F70001","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"y"}],"text":""}'
-      - '{"extra":[{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#7F0000","text":"p"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#8E0002","text":"o"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#9D0003","text":"w"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#AD0004","text":"e"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#BD0004","text":"r"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#CD0003","text":"f"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#DE0003","text":"u"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#EE0001","text":"l"},{"bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"#FF0000","text":"."}],"text":""}'
+      - '{"extra":[{"color":"dark_gray","text":"Efficiency"},{"color":"#FF0000","text":" IX"}],"text":""}'
+      - '{"extra":[{"color":"dark_gray","text":"Fortune"},{"color":"#FF0000","text":" III"}],"text":""}'
+      - '{"extra":[{"color":"dark_gray","text":"Unbreakable"}],"text":""}'
+      - '{"extra":[{"color":"dark_gray","text":"Ancient Power"},{"color":"#FF0000","text":" ♆"}],"text":""}'
+      - '{"extra":[{"color":"gray","text":""}],"text":""}'
+      - '{"extra":[
+    {"color":"#7F0000","text":"A"},
+    {"color":"#880001","text":" R"},
+    {"color":"#900002","text":"e"},
+    {"color":"#990003","text":"l"},
+    {"color":"#A20004","text":"i"},
+    {"color":"#AB0004","text":"c"},
+    {"color":"#B40004","text":" f"},
+    {"color":"#BD0004","text":"r"},
+    {"color":"#C60003","text":"o"},
+    {"color":"#D00003","text":"m"},
+    {"color":"#D90003","text":" a"},
+    {"color":"#E20002","text":" t"},
+    {"color":"#EC0002","text":"i"},
+    {"color":"#F50001","text":"m"},
+    {"color":"#FF0000","text":"e"}],"text":""}'
+      - '{"extra":[
+    {"color":"#7F0000","text":"l"},
+    {"color":"#880001","text":"o"},
+    {"color":"#920002","text":"n"},
+    {"color":"#9B0003","text":"g"},
+    {"color":"#A50004","text":" p"},
+    {"color":"#AE0004","text":"a"},
+    {"color":"#B80004","text":"s"},
+    {"color":"#C20004","text":"t"},
+    {"color":"#CC0003","text":"."},
+    {"color":"#D60003","text":"."},
+    {"color":"#E00002","text":"."},
+    {"color":"#EA0002","text":" t"},
+    {"color":"#F50001","text":"h"},
+    {"color":"#FF0000","text":"i"},
+    {"color":"#FF0000","text":"s"}],"text":""}'
+      - '{"extra":[
+    {"color":"#7F0000","text":"t"},
+    {"color":"#870001","text":"o"},
+    {"color":"#8E0002","text":"o"},
+    {"color":"#960003","text":"l"},
+    {"color":"#9D0003","text":" i"},
+    {"color":"#A50004","text":"s"},
+    {"color":"#AD0004","text":" u"},
+    {"color":"#B50004","text":"n"},
+    {"color":"#BD0004","text":"n"},
+    {"color":"#C50003","text":"a"},
+    {"color":"#CD0003","text":"t"},
+    {"color":"#D50003","text":"u"},
+    {"color":"#DE0003","text":"r"},
+    {"color":"#E60002","text":"a"},
+    {"color":"#EE0001","text":"l"},
+    {"color":"#F70001","text":"l"},
+    {"color":"#FF0000","text":"y"}],"text":""}'
+      - '{"extra":[
+    {"color":"#7F0000","text":"p"},
+    {"color":"#8E0002","text":"o"},
+    {"color":"#9D0003","text":"w"},
+    {"color":"#AD0004","text":"e"},
+    {"color":"#BD0004","text":"r"},
+    {"color":"#CD0003","text":"f"},
+    {"color":"#DE0003","text":"u"},
+    {"color":"#EE0001","text":"l"},
+    {"color":"#FF0000","text":"."}],"text":""}'
     custom-model-data: 1000006
     enchants:
       DIG_SPEED: 9
       LOOT_BONUS_BLOCKS: 3
-      MENDING: 1
-      DURABILITY: 5
     ItemFlags:
       - HIDE_ENCHANTS
 titanpickredsilk:

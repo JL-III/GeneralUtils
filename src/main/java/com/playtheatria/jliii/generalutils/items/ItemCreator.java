@@ -30,37 +30,8 @@ public class ItemCreator {
     public static ItemStack etherealFragment;
     public static ItemStack christmasPick;
     public static ItemStack gingerbreadMan;
-    public static ItemStack titanPickRedFortune;
-    public static ItemStack titanPickRedSilk;
-    public static ItemStack titanPickYellowFortune;
-    public static ItemStack titanPickYellowSilk;
-    public static ItemStack titanPickBlueFortune;
-    public static ItemStack titanPickBlueSilk;
-    public static ItemStack titanShovelRed;
-    public static ItemStack titanAxeRed;
-    public static ItemStack titanAxeYellow;
-    public static ItemStack titanAxeBlue;
-    public static ItemStack titanSwordRed;
-    public static ItemStack titanSwordYellow;
-    public static ItemStack titanSwordBlue;
-    public static ItemStack titanRodRed;
 
     static {
-        fileConfiguration = Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("GeneralUtils")).getConfig();
-        titanPickRedFortune = (ItemStack) fileConfiguration.get("titanpickredfortune");
-        titanPickRedSilk = (ItemStack) fileConfiguration.get("titanpickredsilk");
-        titanPickYellowFortune = (ItemStack) fileConfiguration.get("titanpickyellowfortune");
-        titanPickYellowSilk = (ItemStack) fileConfiguration.get("titanpickyellowsilk");
-        titanPickBlueFortune = (ItemStack) fileConfiguration.get("titanpickbluefortune");
-        titanPickBlueSilk = (ItemStack) fileConfiguration.get("titanpickbluesilk");
-        titanShovelRed = (ItemStack) fileConfiguration.get("titanshovelred");
-        titanAxeRed = (ItemStack) fileConfiguration.get("titanaxered");
-        titanAxeYellow = (ItemStack) fileConfiguration.get("titanaxeyellow");
-        titanAxeBlue = (ItemStack) fileConfiguration.get("titanaxeblue");
-        titanSwordRed = (ItemStack) fileConfiguration.get("titanswordred");
-        titanSwordYellow = (ItemStack) fileConfiguration.get("titanswordyellow");
-        titanSwordBlue = (ItemStack) fileConfiguration.get("titanswordblue");
-        titanRodRed = (ItemStack) fileConfiguration.get("titanrodred");
         createPowerCrystalCommon();
         createPowerCrystalUncommon();
         createPowerCrystalSuper();

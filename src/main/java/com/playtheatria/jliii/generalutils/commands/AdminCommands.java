@@ -2,7 +2,9 @@ package com.playtheatria.jliii.generalutils.commands;
 
 import com.playtheatria.jliii.generalutils.GeneralUtils;
 import com.playtheatria.jliii.generalutils.enums.Status;
+import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,10 +18,12 @@ import java.util.List;
 public class AdminCommands implements CommandExecutor {
 
     private GeneralUtils plugin;
+    private ConfigManager configManager;
     private PlayerMessenger playerMessenger;
 
-    public AdminCommands(GeneralUtils plugin, PlayerMessenger playerMessenger) {
+    public AdminCommands(GeneralUtils plugin, ConfigManager configManager, PlayerMessenger playerMessenger) {
         this.plugin = plugin;
+        this.configManager = configManager;
         this.playerMessenger = playerMessenger;
     }
 
@@ -38,6 +42,13 @@ public class AdminCommands implements CommandExecutor {
 
         if (args.length == 1 && args[0].equalsIgnoreCase("version")) {
             plugin.getCustomLogger().sendLog("GeneralUtils version " + plugin.getDescription().getVersion());
+            return true;
+        }
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+            configManager.reload();
+            player.sendMessage(ChatColor.GREEN + "Reloaded config");
+            plugin.getCustomLogger().sendLog("Reloaded Config");
             return true;
         }
 

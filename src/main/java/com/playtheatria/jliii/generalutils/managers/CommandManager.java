@@ -12,18 +12,18 @@ public class CommandManager {
 
     private final GeneralUtils plugin;
     private final CustomLogger customLogger;
-    private PlayerMessenger playerMessenger;
+    private final PlayerMessenger playerMessenger;
 
-    public CommandManager(GeneralUtils plugin, CustomLogger customLogger, PlayerMessenger playerMessenger) {
+    public CommandManager(GeneralUtils plugin, ConfigManager configManager, CustomLogger customLogger, PlayerMessenger playerMessenger) {
         this.plugin = plugin;
         this.customLogger = customLogger;
         this.playerMessenger = playerMessenger;
-        registerCommands();
+        registerCommands(configManager);
     }
 
-    private void registerCommands() {
-        Objects.requireNonNull(plugin.getServer().getPluginCommand("gu")).setExecutor(new AdminCommands(plugin, playerMessenger));
-        Objects.requireNonNull(plugin.getServer().getPluginCommand("tkit")).setExecutor(new KitCommands(customLogger));
+    private void registerCommands(ConfigManager configManager) {
+        Objects.requireNonNull(plugin.getServer().getPluginCommand("gu")).setExecutor(new AdminCommands(plugin, configManager, playerMessenger));
+        Objects.requireNonNull(plugin.getServer().getPluginCommand("tkit")).setExecutor(new KitCommands(configManager, customLogger));
         customLogger.sendLog("Registered commands.");
     }
 

@@ -1,6 +1,7 @@
 package com.playtheatria.jliii.generalutils.commands;
 
 import com.playtheatria.jliii.generalutils.items.ItemCreator;
+import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +17,8 @@ import java.util.HashMap;
 
 public class KitCommands implements CommandExecutor {
 
-    private CustomLogger logger;
+    private final CustomLogger logger;
+    private final ConfigManager configManager;
     private final String COMMON = "common";
     private final String UNCOMMON = "uncommon";
     private final String SUPER = "super";
@@ -28,27 +30,14 @@ public class KitCommands implements CommandExecutor {
     private final String ETHEREAL_FRAGMENT = "etherealfragment";
     private final String CHRISTMAS_PICK = "christmaspick";
     private final String GINGERBREAD_MAN = "gingerbreadman";
-    private final String TITAN_PICK_RED_FORTUNE = "titanpickredfortune";
-    private final String TITAN_PICK_RED_SILK = "titanpickredsilk";
-    private final String TITAN_PICK_YELLOW_FORTUNE = "titanpickyellowfortune";
-    private final String TITAN_PICK_YELLOW_SILK = "titanpickyellowsilk";
-    private final String TITAN_PICK_BLUE_FORTUNE = "titanpickbluefortune";
-    private final String TITAN_PICK_BLUE_SILK = "titanpickbluesilk";
-    private final String TITAN_SHOVEL_RED = "titanshovelred";
-    private final String TITAN_AXE_RED = "titanaxered";
-    private final String TITAN_AXE_YELLOW = "titanaxeyellow";
-    private final String TITAN_AXE_BLUE = "titanaxeblue";
-    private final String TITAN_SWORD_RED = "titanswordred";
-    private final String TITAN_SWORD_YELLOW = "titanswordyellow";
-    private final String TITAN_SWORD_BLUE = "titanswordblue";
-    private final String TITAN_ROD_RED = "titanrodred";
 
 
     //TODO this needs to be implemented.
     private final String CASINO_KEY = "casinokey";
     private String PLAYER_NAME;
 
-    public KitCommands(CustomLogger logger) {
+    public KitCommands(ConfigManager configManager, CustomLogger logger) {
+        this.configManager = configManager;
         this.logger = logger;
     }
 
@@ -73,20 +62,20 @@ public class KitCommands implements CommandExecutor {
                         case ETHEREAL_FRAGMENT -> reportResult(ETHEREAL_FRAGMENT, inventory.addItem(ItemCreator.etherealFragment));
                         case CHRISTMAS_PICK -> reportResult(CHRISTMAS_PICK, inventory.addItem(ItemCreator.christmasPick));
                         case GINGERBREAD_MAN -> reportResult(GINGERBREAD_MAN, inventory.addItem(ItemCreator.gingerbreadMan));
-                        case TITAN_PICK_RED_FORTUNE -> reportResult(TITAN_PICK_RED_FORTUNE, inventory.addItem(ItemCreator.titanPickRedFortune));
-                        case TITAN_PICK_RED_SILK -> reportResult(TITAN_PICK_RED_SILK, inventory.addItem(ItemCreator.titanPickRedSilk));
-                        case TITAN_PICK_YELLOW_FORTUNE -> reportResult(TITAN_PICK_YELLOW_FORTUNE, inventory.addItem(ItemCreator.titanPickYellowFortune));
-                        case TITAN_PICK_YELLOW_SILK -> reportResult(TITAN_PICK_YELLOW_SILK, inventory.addItem(ItemCreator.titanPickYellowSilk));
-                        case TITAN_PICK_BLUE_FORTUNE -> reportResult(TITAN_PICK_BLUE_FORTUNE,  inventory.addItem(ItemCreator.titanPickBlueFortune));
-                        case TITAN_PICK_BLUE_SILK -> reportResult(TITAN_PICK_BLUE_SILK,  inventory.addItem(ItemCreator.titanPickBlueSilk));
-                        case TITAN_SHOVEL_RED -> reportResult(TITAN_SHOVEL_RED, inventory.addItem(ItemCreator.titanShovelRed));
-                        case TITAN_AXE_RED -> reportResult(TITAN_AXE_RED, inventory.addItem(ItemCreator.titanAxeRed));
-                        case TITAN_AXE_YELLOW -> reportResult(TITAN_AXE_YELLOW, inventory.addItem(ItemCreator.titanAxeYellow));
-                        case TITAN_AXE_BLUE -> reportResult(TITAN_AXE_BLUE, inventory.addItem(ItemCreator.titanAxeBlue));
-                        case TITAN_SWORD_RED -> reportResult(TITAN_SWORD_RED, inventory.addItem(ItemCreator.titanSwordRed));
-                        case TITAN_SWORD_YELLOW -> reportResult(TITAN_SWORD_YELLOW, inventory.addItem(ItemCreator.titanSwordYellow));
-                        case TITAN_SWORD_BLUE -> reportResult(TITAN_SWORD_BLUE, inventory.addItem(ItemCreator.titanSwordBlue));
-                        case TITAN_ROD_RED -> reportResult(TITAN_ROD_RED, inventory.addItem(ItemCreator.titanRodRed));
+                        case "titanpickredfortune" -> reportResult(args[1], inventory.addItem(configManager.getTitanPickRedFortune()));
+                        case "titanpickredsilk" -> reportResult(args[1], inventory.addItem(configManager.getTitanPickRedSilk()));
+                        case "titanpickyellowfortune" -> reportResult(args[1], inventory.addItem(configManager.getTitanPickYellowFortune()));
+                        case "titanpickyellowsilk" -> reportResult(args[1], inventory.addItem(configManager.getTitanPickYellowSilk()));
+                        case "titanpickbluefortune" -> reportResult(args[1],  inventory.addItem(configManager.getTitanPickBlueFortune()));
+                        case "titanpickbluesilk" -> reportResult(args[1],  inventory.addItem(configManager.getTitanPickBlueSilk()));
+                        case "titanshovelred" -> reportResult(args[1], inventory.addItem(configManager.getTitanShovelRed()));
+                        case "titanaxered" -> reportResult(args[1], inventory.addItem(configManager.getTitanAxeRed()));
+                        case "titanaxeyellow" -> reportResult(args[1], inventory.addItem(configManager.getTitanAxeYellow()));
+                        case "titanaxeblue" -> reportResult(args[1], inventory.addItem(configManager.getTitanAxeBlue()));
+                        case "titanswordred" -> reportResult(args[1], inventory.addItem(configManager.getTitanSwordRed()));
+                        case "titanswordyellow" -> reportResult(args[1], inventory.addItem(configManager.getTitanSwordYellow()));
+                        case "titanswordblue" -> reportResult(args[1], inventory.addItem(configManager.getTitanSwordBlue()));
+                        case "titanrodred" -> reportResult(args[1], inventory.addItem(configManager.getTitanRodRed()));
                         default -> sender.sendMessage(ChatColor.DARK_RED + "This kit does not exist");
                     }
                 }
