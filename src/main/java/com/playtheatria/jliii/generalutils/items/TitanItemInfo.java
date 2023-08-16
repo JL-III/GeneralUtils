@@ -3,6 +3,7 @@ package com.playtheatria.jliii.generalutils.items;
 import com.playtheatria.jliii.generalutils.enums.ToolColor;
 import com.playtheatria.jliii.generalutils.enums.ToolStatus;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -342,7 +343,7 @@ public class TitanItemInfo {
 
     public static boolean hasCharge(ItemStack item) {
         for (String string : item.getLore()) {
-            if (string.contains(CHARGE_STRING)) return true;
+            if (string.contains(CHARGE_PREFIX)) return true;
         }
         return false;
     }
