@@ -1,5 +1,6 @@
 package com.playtheatria.jliii.generalutils.items;
 
+import com.playtheatria.jliii.generalutils.enums.ToolColor;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -9,6 +10,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.*;
 
 public class TitanItemInfo {
+
+//    New variables for second edition titan tools
+    public static final String STATUS_PREFIX = "● Status";
+    public static final String CHARGE_PREFIX = "● Charge";
+    public static final String ON = "ON";
+    public static final String OFF = "OFF";
+    public static final String RED_STATUS_ON = ToolColor.RED.getDarkColorCode() + "  " + STATUS_PREFIX + ToolColor.RED.getBrightColorCode() + " " + ON;
+    public static final String RED_STATUS_OFF = ToolColor.RED.getDarkColorCode() + "  " + STATUS_PREFIX + ToolColor.RED.getBrightColorCode() + " " + OFF;
+    public static final String RED_CHARGE = ToolColor.RED.getDarkColorCode() + "  " + CHARGE_PREFIX + ToolColor.RED.getBrightColorCode() + " ";
+    public static final String DARK_YELLOW = "";
+    public static final String BRIGHT_YELLOW = "";
+
+
+//    New variables for second edition titan tools
+
     public static final String ANCIENT_RED = "§8Ancient Power§x§F§F§0§0§0§0 ♆";
     public static final String ANCIENT_YELLOW = "§8Ancient Power§x§F§F§E§C§2§7 ♆";
     public static final String ANCIENT_BLUE = "§8Ancient Power§x§6§D§5§E§F§F ♆";

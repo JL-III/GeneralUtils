@@ -1,7 +1,7 @@
 package com.playtheatria.jliii.generalutils.commands;
 
 import com.playtheatria.jliii.generalutils.GeneralUtils;
-import com.playtheatria.jliii.generalutils.enums.Status;
+import com.playtheatria.jliii.generalutils.enums.MessageStatus;
 import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import org.bukkit.ChatColor;
@@ -9,7 +9,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,7 +52,7 @@ public class AdminCommands implements CommandExecutor {
         }
 
         if (args.length == 1 && args[0].equalsIgnoreCase("tasks")) {
-            playerMessenger.sendResponse(player, "Tasks found.", Status.VALID);
+            playerMessenger.sendResponse(player, "Tasks found.", MessageStatus.VALID);
             plugin.getServer().getScheduler().getPendingTasks().forEach(task -> playerMessenger.sendMessage(player, task.getTaskId() + " - " + task.getOwner().getName()));
             return true;
         }
@@ -61,9 +60,9 @@ public class AdminCommands implements CommandExecutor {
         if (args.length == 2 && args[0].equalsIgnoreCase("tasks")) {
             List<BukkitTask> tasks = plugin.getServer().getScheduler().getPendingTasks();
             if (tasks.stream().noneMatch(task -> task.getOwner().getName().equalsIgnoreCase(args[1]))) {
-                playerMessenger.sendResponse(player, "No tasks found.", Status.INVALID);
+                playerMessenger.sendResponse(player, "No tasks found.", MessageStatus.INVALID);
             } else {
-                playerMessenger.sendResponse(player, "Tasks found.", Status.VALID);
+                playerMessenger.sendResponse(player, "Tasks found.", MessageStatus.VALID);
                 tasks.stream().filter(task -> task.getOwner().getName().equalsIgnoreCase(args[1])).forEach(task -> player.sendMessage(task.getTaskId() + " - " + task.getOwner().getName()));
             }
 
