@@ -1,6 +1,7 @@
 package com.playtheatria.jliii.generalutils.items;
 
 import com.playtheatria.jliii.generalutils.enums.ToolColor;
+import com.playtheatria.jliii.generalutils.enums.ToolStatus;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,14 +15,21 @@ public class TitanItemInfo {
 //    New variables for second edition titan tools
     public static final String STATUS_PREFIX = "● Status";
     public static final String CHARGE_PREFIX = "● Charge";
-    public static final String ON = "ON";
-    public static final String OFF = "OFF";
-    public static final String RED_STATUS_ON = ToolColor.RED.getDarkColorCode() + "  " + STATUS_PREFIX + ToolColor.RED.getBrightColorCode() + " " + ON;
-    public static final String RED_STATUS_OFF = ToolColor.RED.getDarkColorCode() + "  " + STATUS_PREFIX + ToolColor.RED.getBrightColorCode() + " " + OFF;
-    public static final String RED_CHARGE = ToolColor.RED.getDarkColorCode() + "  " + CHARGE_PREFIX + ToolColor.RED.getBrightColorCode() + " ";
-    public static final String DARK_YELLOW = "";
-    public static final String BRIGHT_YELLOW = "";
 
+    public static int getChargeLoreIndex(List<String> loreList) {
+        for (int i = 0; i < loreList.size(); i++){
+            if (loreList.get(i).contains(CHARGE_PREFIX)) return i;
+        }
+        return -1;
+    }
+
+    public String createStatus(ToolColor color, ToolStatus status) {
+        return color.getDarkColorCode() + " " + STATUS_PREFIX + color.getBrightColorCode() + " " + status.getString();
+    }
+
+    public String createChargeLore(ToolColor color, int amount) {
+        return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
+    }
 
 //    New variables for second edition titan tools
 
