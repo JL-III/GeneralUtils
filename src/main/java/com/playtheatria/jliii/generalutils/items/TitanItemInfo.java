@@ -370,7 +370,7 @@ public class TitanItemInfo {
 
     public static boolean isTitanTool(ItemStack item){
         for (String lore : getLore(item)) {
-            if (TITAN_LORE.contains(lore)) {
+            if (lore.contains(STATUS_PREFIX)) {
                 return true;
             }
         }
