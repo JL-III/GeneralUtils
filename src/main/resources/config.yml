@@ -7,7 +7,7 @@ resource-pack: "https://www.dropbox.com/scl/fo/ve7c5elsk1iu7e1vbdu59/h?dl=1&rlke
 durability:
   enchantable-items: ["DIAMOND_PICKAXE", "NETHERITE_PICKAXE", "DIAMOND_SHOVEL", "NETHERITE_SHOVEL"]
 
-trench:
+titanPick:
   enchantable-items: ["DIAMOND_PICKAXE", "NETHERITE_PICKAXE"]
   destroyable-items:
     [
