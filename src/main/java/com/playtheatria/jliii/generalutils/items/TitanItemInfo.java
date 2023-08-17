@@ -5,6 +5,7 @@ import com.playtheatria.jliii.generalutils.enums.ToolStatus;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -14,18 +15,18 @@ public class TitanItemInfo {
     public static final String STATUS_PREFIX = "● Status";
     public static final String CHARGE_PREFIX = "● Charge";
 
-    public static int getChargeLoreIndex(List<String> loreList) {
+    public static int getChargeLoreIndex(@NotNull List<String> loreList) {
         for (int i = 0; i < loreList.size(); i++){
             if (loreList.get(i).contains(CHARGE_PREFIX)) return i;
         }
         return -1;
     }
 
-    public String createStatus(ToolColor color, ToolStatus status) {
+    public String getStatusLore(@NotNull ToolColor color, @NotNull ToolStatus status) {
         return color.getDarkColorCode() + " " + STATUS_PREFIX + color.getBrightColorCode() + " " + status.getString();
     }
 
-    public String createChargeLore(ToolColor color, int amount) {
+    public String getChargeLore(@NotNull ToolColor color, int amount) {
         return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
     }
 
@@ -127,14 +128,14 @@ public class TitanItemInfo {
         return false;
     }
 
-    public static List<String> getLore(ItemStack item) {
+    public static List<String> getLore(@NotNull ItemStack item) {
         if (item.hasItemMeta() && item.getItemMeta().hasLore()) {
             return item.getItemMeta().getLore();
         }
         return new ArrayList<>();
     }
 
-    public static boolean setLore(ItemStack item, List<String> loreList) {
+    public static boolean setLore(@NotNull ItemStack item, List<String> loreList) {
         if (item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
             meta.setLore(loreList);
