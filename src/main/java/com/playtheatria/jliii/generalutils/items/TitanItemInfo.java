@@ -22,11 +22,18 @@ public class TitanItemInfo {
         return -1;
     }
 
-    public String getStatusLore(@NotNull ToolColor color, @NotNull ToolStatus status) {
+    public static int getStatusIndex(@NotNull List<String> lore) {
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).contains(STATUS_PREFIX)) return i;
+        }
+        return -1;
+    }
+
+    public static String getStatusLore(@NotNull ToolColor color, @NotNull ToolStatus status) {
         return color.getDarkColorCode() + " " + STATUS_PREFIX + color.getBrightColorCode() + " " + status.getString();
     }
 
-    public String getChargeLore(@NotNull ToolColor color, int amount) {
+    public static String getChargeLore(@NotNull ToolColor color, int amount) {
         return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
     }
 
@@ -169,6 +176,19 @@ public class TitanItemInfo {
             }
         }
         return ToolColor.NONE;
+    }
+
+    public static ToolStatus getStatus(ItemStack item) {
+        for (String lore : getLore(item)) {
+            if (lore.contains(STATUS_PREFIX)) {
+                if (lore.contains(ToolStatus.OFF.getString())) {
+                    return ToolStatus.OFF;
+                } else if (lore.contains(ToolStatus.ON.getString())) {
+                    return ToolStatus.ON;
+                }
+            }
+        }
+        return ToolStatus.EMPTY;
     }
 
     public static boolean isTitanPick(ItemStack item) {

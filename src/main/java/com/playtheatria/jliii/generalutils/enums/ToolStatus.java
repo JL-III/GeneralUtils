@@ -2,7 +2,8 @@ package com.playtheatria.jliii.generalutils.enums;
 
 public enum ToolStatus {
     ON("ON"),
-    OFF("OFF");
+    OFF("OFF"),
+    EMPTY("EMPTY");
 
     private final String string;
     ToolStatus(String string) {
