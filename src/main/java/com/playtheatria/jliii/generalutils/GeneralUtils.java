@@ -1,6 +1,5 @@
 package com.playtheatria.jliii.generalutils;
 
-import com.playtheatria.jliii.generalutils.items.ItemCreator;
 import com.playtheatria.jliii.generalutils.managers.CommandManager;
 import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
@@ -8,7 +7,6 @@ import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -24,7 +22,6 @@ public final class GeneralUtils extends JavaPlugin {
         customLogger = new CustomLogger(getName(), NamedTextColor.GREEN, NamedTextColor.YELLOW);
         ConfigManager configManager = new ConfigManager(this);
         new CommandManager(this, configManager, customLogger, playerMessenger);
-//        new ItemCreator();
     }
 
     public CustomLogger getCustomLogger() {
