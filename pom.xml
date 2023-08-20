@@ -12,7 +12,7 @@
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <generalutils.version>v1.0.3-alpha-10</generalutils.version>
+        <generalutils.version>v1.0.3-alpha-12</generalutils.version>
     </properties>
     <build>
         <plugins>
