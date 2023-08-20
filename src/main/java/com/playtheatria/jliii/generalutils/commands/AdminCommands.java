@@ -2,9 +2,12 @@ package com.playtheatria.jliii.generalutils.commands;
 
 import com.playtheatria.jliii.generalutils.GeneralUtils;
 import com.playtheatria.jliii.generalutils.enums.MessageStatus;
+import com.playtheatria.jliii.generalutils.enums.ToolColor;
+import com.playtheatria.jliii.generalutils.enums.ToolStatus;
 import com.playtheatria.jliii.generalutils.items.TitanItemInfo;
 import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
+import com.playtheatria.jliii.generalutils.utils.Response;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,17 +35,22 @@ public class AdminCommands implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (!(sender instanceof Player player)) {
             if (args[0].equalsIgnoreCase("debug")) {
-                ItemStack itemStack = configManager.getTitanPickBlueFortune();
+                ItemStack itemStack = configManager.getTestTool();
                 sender.sendMessage(ChatColor.LIGHT_PURPLE + "--------------------Debug--------------------");
                 sender.sendMessage("Contains charge lore: " + TitanItemInfo.hasCharge(itemStack));
                 List<String> lore = TitanItemInfo.getLore(itemStack);
                 if (lore.size() < 1) return false;
                 sender.sendMessage("Charge lore index: " + TitanItemInfo.getChargeLoreIndex(lore));
-                sender.sendMessage("Get color response: " + TitanItemInfo.getColor(itemStack));
+                Response<ToolColor> toolColorResponse = TitanItemInfo.getColor(lore);
+                Response<ToolStatus> toolStatusResponse = TitanItemInfo.getStatus(lore);
+                sender.sendMessage("ToolColor: " + (toolColorResponse.errorMessage() != null ? toolColorResponse.errorMessage() : toolColorResponse.value()));
+                sender.sendMessage("ToolColor: " + (toolStatusResponse.errorMessage() != null ? toolStatusResponse.errorMessage() : toolStatusResponse.value()));
                 try {
                     sender.sendMessage("Length of string: " + lore.get(TitanItemInfo.getChargeLoreIndex(lore)).length());
                     sender.sendMessage("Length of CHARGE_PREFIX " + TitanItemInfo.CHARGE_PREFIX.length());
-                    sender.sendMessage("Length of generated string: " + TitanItemInfo.getChargeLore(TitanItemInfo.getColor(itemStack), 0).length());
+                    if (toolColorResponse.isSuccess()) {
+                        sender.sendMessage("Length of generated string: " + TitanItemInfo.getChargeLore(toolColorResponse.value(), 0).length());
+                    }
                     sender.sendMessage("Get charge amount: " + TitanItemInfo.getCharge(lore, 39));
                 } catch (NumberFormatException exception) {
                     exception.printStackTrace();

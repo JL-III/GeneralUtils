@@ -2,6 +2,7 @@ package com.playtheatria.jliii.generalutils.items;
 
 import com.playtheatria.jliii.generalutils.enums.ToolColor;
 import com.playtheatria.jliii.generalutils.enums.ToolStatus;
+import com.playtheatria.jliii.generalutils.utils.Response;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -36,6 +37,18 @@ public class TitanItemInfo {
     public static String getChargeLore(@NotNull ToolColor color, int amount) {
         return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
     }
+
+    /**
+     * Gets the charge on a charged Titan tool or returns -1.
+     * <p>
+     *     This method iterates through a list of strings and checks if any match the CHARGE_PREFIX constant found in the TitanItemInfo class.
+     *     Once found the method returns a parsed integer to the caller.
+     * </p>
+     * @param lore list of strings retrieved from the Titan tool
+     * @param offset The offset of the substring since we are parsing the integer at the end of the string, the caller must handle any exception that is thrown.
+     * @throws NumberFormatException This method makes an assumption that the end of the string will contain a number value if it contains the TitanItemInfo.CHARGE_PREFIX
+     * @return Returns the integer value of the charge on a Titan tool.
+     * */
 
     public static int getCharge(@NotNull List<String> lore, int offset) throws NumberFormatException {
         for (String string : lore) {
@@ -162,42 +175,51 @@ public class TitanItemInfo {
     }
 
     /**
-     * Retrieves the color from the item's lore.
+     * Retrieves the color from a String list of lore.
      * <p>
-     * This method iterates through the lore of the provided item and returns the corresponding
-     * ToolColor if found. If no color is found, ToolColor.NONE is returned as the default value.
-     * The caller should take into account the possibility of a ToolColor.NONE return value
-     * and validate or handle it accordingly.
+     * This method iterates through the provided list and returns the corresponding
+     * ToolColor if found. If no color is found, a null value for ToolColor is returned along with a value for the Error message.
+     * The caller should check the success of the method with Response.isSuccessful() before handling the object response since the ToolColor might be null.
+     *
      * </p>
      *
-     * @param item the ItemStack from which to retrieve the color
-     * @return the corresponding ToolColor enum value, or ToolColor.NONE if no color is found
-     * @see ToolColor ToolColor for the defined color codes
+     * @param lore A list of strings from which to retrieve the ToolColor Response
+     * @return the corresponding Response wrapper value. If no color is found then an error message is provided in the error value.
+     * @see Response Response<T> for the Response Object
+     * @see ToolColor ToolColor for the enums
      */
-    public static ToolColor getColor(ItemStack item){
-        for (String lore : getLore(item)) {
-            if (lore.contains(ToolColor.RED.getBrightColorCode())) {
-                return ToolColor.RED;
-            } else if (lore.contains(ToolColor.YELLOW.getBrightColorCode())) {
-                return ToolColor.YELLOW;
-            } else if (lore.contains(ToolColor.BLUE.getBrightColorCode())) {
-                return ToolColor.BLUE;
-            }
-        }
-        return ToolColor.NONE;
-    }
-
-    public static ToolStatus getStatus(ItemStack item) {
-        for (String lore : getLore(item)) {
-            if (lore.contains(STATUS_PREFIX)) {
-                if (lore.contains(ToolStatus.OFF.getString())) {
-                    return ToolStatus.OFF;
-                } else if (lore.contains(ToolStatus.ON.getString())) {
-                    return ToolStatus.ON;
+    public static Response<ToolColor> getColor(List<String> loreList){
+        for (String lore : loreList) {
+            for (ToolColor toolColor : ToolColor.values()) {
+                if (lore.contains(toolColor.getBrightColorCode())) {
+                    return new Response<>(toolColor, null);
                 }
             }
         }
-        return ToolStatus.EMPTY;
+        return new Response<>(null, "Could not match a color.");
+    }
+
+    /**
+     * Retrieves the status of a Titan tool or ToolStatus.EMPTY
+     * <p>
+     *  This method iterates through the lore list and checks for a matching constant STATUS_PREFIX found in the TitanIteminfo class.
+     *  If found, the method checks for a match against the string value of ToolStatus.OFF or ToolStatus.ON and returns the appropriate ToolStatus.
+     *  If not found it returns ToolStatus.EMPTY
+     * </p>
+     * @param lore A list of strings found on a TitanTool.
+     * @return ToolStatus on the tool, the caller needs to account for the ToolStatus.EMPTY return case.
+     * */
+    public static Response<ToolStatus> getStatus(List<String> loreList) {
+        for (String lore : loreList) {
+            if (lore.contains(STATUS_PREFIX)) {
+                if (lore.contains(ToolStatus.OFF.getString())) {
+                    return new Response<>(ToolStatus.OFF, null);
+                } else if (lore.contains(ToolStatus.ON.getString())) {
+                    return new Response<>(ToolStatus.ON, null);
+                }
+            }
+        }
+        return new Response<>(null, "Could not retrieve a tool status.");
     }
 
     public static boolean isTitanPick(ItemStack item) {
