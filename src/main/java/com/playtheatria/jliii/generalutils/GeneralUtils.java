@@ -15,7 +15,7 @@ import java.util.Properties;
 public final class GeneralUtils extends JavaPlugin {
 
     private CustomLogger customLogger;
-    private static ConfigManager configManager;
+    private ConfigManager configManager;
 
     @Override
     public void onEnable() {
@@ -45,7 +45,7 @@ public final class GeneralUtils extends JavaPlugin {
         }
     }
 
-    public static ConfigManager getConfigManager() {
+    public ConfigManager getConfigManager() {
         return configManager;
     }
 
