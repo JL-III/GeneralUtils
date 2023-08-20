@@ -22,7 +22,7 @@ public class TitanItemInfo {
         return -1;
     }
 
-    public static int getStatusIndex(@NotNull List<String> lore) {
+    public static int getStatusLoreIndex(@NotNull List<String> lore) {
         for (int i = 0; i < lore.size(); i++) {
             if (lore.get(i).contains(STATUS_PREFIX)) return i;
         }
@@ -35,6 +35,15 @@ public class TitanItemInfo {
 
     public static String getChargeLore(@NotNull ToolColor color, int amount) {
         return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
+    }
+
+    public static int getCharge(@NotNull List<String> lore) {
+        for (String string : lore) {
+            if (string.contains(CHARGE_PREFIX)) {
+                return Integer.parseInt(string.substring(CHARGE_PREFIX.length()));
+            }
+        }
+        return -1;
     }
 
 //    New variables for second edition titan tools
