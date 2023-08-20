@@ -9,18 +9,20 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.io.ObjectInputFilter;
 import java.util.Properties;
 
 public final class GeneralUtils extends JavaPlugin {
 
     private CustomLogger customLogger;
+    private static ConfigManager configManager;
 
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
         PlayerMessenger playerMessenger = new PlayerMessenger();
         customLogger = new CustomLogger(getName(), NamedTextColor.GREEN, NamedTextColor.YELLOW);
-        ConfigManager configManager = new ConfigManager(this);
+        configManager = new ConfigManager(this);
         new CommandManager(this, configManager, customLogger, playerMessenger);
     }
 
@@ -42,4 +44,9 @@ public final class GeneralUtils extends JavaPlugin {
             return ChatColor.RED + "No version information was found";
         }
     }
+
+    public static ConfigManager getConfigManager() {
+        return configManager;
+    }
+
 }
