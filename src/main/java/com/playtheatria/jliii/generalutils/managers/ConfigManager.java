@@ -23,9 +23,14 @@ public class ConfigManager {
     private ItemStack titanSwordYellow;
     private ItemStack titanSwordBlue;
     private ItemStack titanRodRed;
+    private ItemStack testTool;
 
     public ConfigManager(Plugin plugin) {
         this.plugin = plugin;
+        load();
+    }
+
+    public void load() {
         fileConfiguration = plugin.getConfig();
         titanPickRedFortune = loadItemStack("titanpickredfortune");
         titanPickRedSilk = loadItemStack("titanpickredsilk");
@@ -41,25 +46,13 @@ public class ConfigManager {
         titanSwordYellow = loadItemStack("titanswordyellow");
         titanSwordBlue = loadItemStack("titanswordblue");
         titanRodRed = loadItemStack("titanrodred");
+        testTool = loadItemStack("testTool");
     }
+
 
     public void reload() {
         plugin.reloadConfig();
-        fileConfiguration = plugin.getConfig();
-        titanPickRedFortune = loadItemStack("titanpickredfortune");
-        titanPickRedSilk = loadItemStack("titanpickredsilk");
-        titanPickYellowFortune = loadItemStack("titanpickyellowfortune");
-        titanPickYellowSilk = loadItemStack("titanpickyellowsilk");
-        titanPickBlueFortune = loadItemStack("titanpickbluefortune");
-        titanPickBlueSilk = loadItemStack("titanpickbluesilk");
-        titanShovelRed = loadItemStack("titanshovelred");
-        titanAxeRed = loadItemStack("titanaxered");
-        titanAxeYellow = loadItemStack("titanaxeyellow");
-        titanAxeBlue = loadItemStack("titanaxeblue");
-        titanSwordRed = loadItemStack("titanswordred");
-        titanSwordYellow = loadItemStack("titanswordyellow");
-        titanSwordBlue = loadItemStack("titanswordblue");
-        titanRodRed = loadItemStack("titanrodred");
+        load();
     }
 
     private ItemStack loadItemStack(String target) {
@@ -127,6 +120,8 @@ public class ConfigManager {
     public ItemStack getTitanRodRed() {
         return titanRodRed;
     }
+
+    public ItemStack getTestTool() { return testTool; }
 
 
 }
