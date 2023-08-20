@@ -37,10 +37,10 @@ public class TitanItemInfo {
         return color.getDarkColorCode() + "  " + CHARGE_PREFIX + color.getBrightColorCode() + " " + amount;
     }
 
-    public static int getCharge(@NotNull List<String> lore) {
+    public static int getCharge(@NotNull List<String> lore, int offset) {
         for (String string : lore) {
             if (string.contains(CHARGE_PREFIX)) {
-                return Integer.parseInt(string.substring(CHARGE_PREFIX.length()));
+                return Integer.parseInt(string.substring(CHARGE_PREFIX.length() + offset));
             }
         }
         return -1;
