@@ -105,47 +105,42 @@ public class TitanItemInfo {
         return false;
     }
 
-    public static boolean isTitanTool(ItemStack item){
+    public static Response<Boolean> isTitanTool(ItemStack item){
         for (String lore : getLore(item)) {
-            if (lore.contains(ANCIENT_POWER_STRING) && lore.contains(ANCIENT_POWER_SYMBOL)) return true;
+            if (lore.contains(ANCIENT_POWER_STRING) && lore.contains(ANCIENT_POWER_SYMBOL)) return Response.success(true);
         }
-        return false;
+        return Response.success(false);
     }
 
-    public static boolean isChargedTitanTool(ItemStack item) {
-        if (!isTitanTool(item)) return false;
+    public static Response<Boolean> isChargedTitanTool(ItemStack item, Response<Boolean> isTitanToolResponse) {
+        if (!isTitanToolResponse.isSuccess()) return Response.failure("Call to check if a tool is charged should not occur if the item is not a TitanTool! This is an error!");
         for (String lore : getLore(item)) {
-            if (lore.contains(CHARGE_PREFIX)) return true;
+            if (lore.contains(CHARGE_PREFIX)) return Response.success(true);
         }
-        return false;
+        return Response.success(false);
     }
 
-    public static boolean isImbuedTitanTool(ItemStack item) {
-        if (!isTitanTool(item)) return false;
+    public static boolean isImbuedTitanTool(ItemStack item, boolean isTitanTool) {
+        if (!isTitanTool) return false;
         for (String lore : getLore(item)) {
             if (lore.contains(CHARGE_PREFIX)) return false;
         }
         return true;
     }
 
-    public static boolean isAllowedTitanType(ItemStack item){
+    /**
+     * Checks to see if the item type matches the list of allowed types.
+     * <p>
+     *     This method checks if the ItemStack provided is a material that is within the List of Material Enum provided.
+     *     Once found the method returns a parsed integer to the caller.
+     * </p>
+     * @param item The ItemStack being checked
+     * @param ALLOWED_TYPES A list of Material Enums that are allowed.
+     * @return Returns true if the ItemStack's material is within the ALLOWED_TYPES list.
+     * */
+    public static boolean isAllowedType(ItemStack item, List<Material> ALLOWED_TYPES){
         if (item == null) return false;
-        return (ALLOWED_TITAN_TYPES.contains(item.getType()));
-    }
-
-    public static boolean isAllowedPickType(ItemStack item){
-        if (item == null) return false;
-        return (ALLOWED_PICK_TYPES.contains(item.getType()));
-    }
-
-    public static boolean isAllowedAxeType(ItemStack item){
-        if (item == null) return false;
-        return (ALLOWED_AXE_TYPES.contains(item.getType()));
-    }
-
-    public static boolean isAllowedShovelType(ItemStack item){
-        if (item == null) return false;
-        return (ALLOWED_SHOVEL_TYPES.contains(item.getType()));
+        return (ALLOWED_TYPES.contains(item.getType()));
     }
 
     public static boolean checkLore(ItemStack item, List<String> LORE){
@@ -180,10 +175,9 @@ public class TitanItemInfo {
      * This method iterates through the provided list and returns the corresponding
      * ToolColor if found. If no color is found, a null value for ToolColor is returned along with a value for the Error message.
      * The caller should check the success of the method with Response.isSuccessful() before handling the object response since the ToolColor might be null.
-     *
      * </p>
      *
-     * @param lore A list of strings from which to retrieve the ToolColor Response
+     * @param loreList A list of strings from which to retrieve the ToolColor Response
      * @return the corresponding Response wrapper value. If no color is found then an error message is provided in the error value.
      * @see Response Response<T> for the Response Object
      * @see ToolColor ToolColor for the enums
@@ -192,11 +186,11 @@ public class TitanItemInfo {
         for (String lore : loreList) {
             for (ToolColor toolColor : ToolColor.values()) {
                 if (lore.contains(toolColor.getBrightColorCode())) {
-                    return new Response<>(toolColor, null);
+                    return Response.success(toolColor);
                 }
             }
         }
-        return new Response<>(null, "Could not match a color.");
+        return Response.failure("Could not match a color.");
     }
 
     /**
@@ -206,7 +200,7 @@ public class TitanItemInfo {
      *  If found, the method checks for a match against the string value of ToolStatus.OFF or ToolStatus.ON and returns the appropriate ToolStatus.
      *  If not found it returns ToolStatus.EMPTY
      * </p>
-     * @param lore A list of strings found on a TitanTool.
+     * @param loreList A list of strings found on a TitanTool.
      * @return ToolStatus on the tool, the caller needs to account for the ToolStatus.EMPTY return case.
      * */
     public static Response<ToolStatus> getStatus(List<String> loreList) {
@@ -222,32 +216,8 @@ public class TitanItemInfo {
         return new Response<>(null, "Could not retrieve a tool status.");
     }
 
-    public static boolean isTitanPick(ItemStack item) {
-        return isTitanTool(item)
-                && isAllowedPickType(item);
+    public static boolean isTitanType(ItemStack item, List<Material> ALLOWED_TYPES, Response<Boolean> isTitanToolResponse) {
+        return isTitanToolResponse.isSuccess() && isAllowedType(item, ALLOWED_TYPES);
     }
 
-    public static boolean isTitanAxe(ItemStack item) {
-        return isTitanTool(item)
-                && isAllowedAxeType(item);
-    }
-
-    public static boolean isTitanShovel(ItemStack item) {
-        return isTitanTool(item) && isAllowedShovelType(item);
-    }
-
-    public static boolean isChargedOrImbuedTitanPick(ItemStack item) {
-        if(!isTitanPick(item)) return false;
-        return (isImbuedTitanTool(item) || isChargedTitanTool(item));
-    }
-
-    public static boolean isChargedOrImbuedTitanAxe(ItemStack item) {
-        if(!isTitanAxe(item)) return false;
-        return (isImbuedTitanTool(item) || isChargedTitanTool(item));
-    }
-
-    public static boolean isChargedOrImbuedTitanShovel(ItemStack item) {
-        if(!isTitanShovel(item)) return false;
-        return (isImbuedTitanTool(item) || isChargedTitanTool(item));
-    }
 }

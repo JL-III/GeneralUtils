@@ -43,8 +43,13 @@ public class AdminCommands implements CommandExecutor {
                 sender.sendMessage("Charge lore index: " + TitanItemInfo.getChargeLoreIndex(lore));
                 Response<ToolColor> toolColorResponse = TitanItemInfo.getColor(lore);
                 Response<ToolStatus> toolStatusResponse = TitanItemInfo.getStatus(lore);
-                sender.sendMessage("ToolColor: " + (toolColorResponse.errorMessage() != null ? toolColorResponse.errorMessage() : toolColorResponse.value()));
-                sender.sendMessage("ToolColor: " + (toolStatusResponse.errorMessage() != null ? toolStatusResponse.errorMessage() : toolStatusResponse.value()));
+                Response<Boolean> isTitanToolResponse = TitanItemInfo.isTitanTool(itemStack);
+                Response<Boolean> isChargedTitanTool = TitanItemInfo.isChargedTitanTool(itemStack, isTitanToolResponse);
+                sender.sendMessage("isTitanTool:" + (isTitanToolResponse.isSuccess() ? isTitanToolResponse.value() : isTitanToolResponse.error()));
+                sender.sendMessage("ToolColor: " + (toolColorResponse.isSuccess() ? toolColorResponse.value() : toolColorResponse.error()));
+                sender.sendMessage("ToolStatus: " + (toolStatusResponse.isSuccess() ? toolStatusResponse.value() : toolStatusResponse.error()));
+                sender.sendMessage("isChargedTitanTool: " + (isChargedTitanTool.isSuccess() ? isChargedTitanTool.value() : isChargedTitanTool.error()));
+
                 try {
                     sender.sendMessage("Length of string: " + lore.get(TitanItemInfo.getChargeLoreIndex(lore)).length());
                     sender.sendMessage("Length of CHARGE_PREFIX " + TitanItemInfo.CHARGE_PREFIX.length());
