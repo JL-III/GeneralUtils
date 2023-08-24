@@ -9,6 +9,7 @@ import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import com.playtheatria.jliii.generalutils.utils.Response;
 import org.bukkit.ChatColor;
+import org.bukkit.block.CommandBlock;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,48 +34,32 @@ public class AdminCommands implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!(sender instanceof Player player)) {
-            if (args[0].equalsIgnoreCase("debug")) {
-                ItemStack itemStack = configManager.getTestTool();
-                sender.sendMessage(ChatColor.LIGHT_PURPLE + "--------------------Debug--------------------");
-                sender.sendMessage("Contains charge lore: " + TitanItemInfo.hasCharge(itemStack));
-                List<String> lore = TitanItemInfo.getLore(itemStack);
-                if (lore.size() < 1) return false;
-                sender.sendMessage("Charge lore index: " + TitanItemInfo.getChargeLoreIndex(lore));
-                Response<ToolColor> toolColorResponse = TitanItemInfo.getColor(lore);
-                Response<ToolStatus> toolStatusResponse = TitanItemInfo.getStatus(lore);
-                Response<Boolean> isTitanToolResponse = TitanItemInfo.isTitanTool(itemStack);
-                Response<Boolean> isChargedTitanTool = TitanItemInfo.isChargedTitanTool(itemStack, isTitanToolResponse);
-                sender.sendMessage("isTitanTool:" + (isTitanToolResponse.isSuccess() ? isTitanToolResponse.value() : isTitanToolResponse.error()));
-                sender.sendMessage("ToolColor: " + (toolColorResponse.isSuccess() ? toolColorResponse.value() : toolColorResponse.error()));
-                sender.sendMessage("ToolStatus: " + (toolStatusResponse.isSuccess() ? toolStatusResponse.value() : toolStatusResponse.error()));
-                sender.sendMessage("isChargedTitanTool: " + (isChargedTitanTool.isSuccess() ? isChargedTitanTool.value() : isChargedTitanTool.error()));
-
-                try {
-                    sender.sendMessage("Length of string: " + lore.get(TitanItemInfo.getChargeLoreIndex(lore)).length());
-                    sender.sendMessage("Length of CHARGE_PREFIX " + TitanItemInfo.CHARGE_PREFIX.length());
-                    if (toolColorResponse.isSuccess()) {
-                        sender.sendMessage("Length of generated string: " + TitanItemInfo.getChargeLore(toolColorResponse.value(), 0).length());
-                    }
-                    sender.sendMessage("Get charge amount: " + TitanItemInfo.getCharge(lore, 39));
-                } catch (NumberFormatException exception) {
-                    exception.printStackTrace();
-                    sender.sendMessage("An error occurred getting the charge from the tool.");
-                }
-
-                if (itemStack.getItemMeta().hasCustomModelData()) {
-                    sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
-                } else {
-                    sender.sendMessage("This item does not have custom model data.");
-                }
-                return true;
+        if (sender instanceof CommandBlock) return false;
+        if (!sender.hasPermission("generalutils.admincommands")) return false;
+        if (args[0].equalsIgnoreCase("debug")) {
+            ItemStack itemStack = !(sender instanceof Player player) ? configManager.getTestTool() : player.getInventory().getItemInMainHand();
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "--------------------Debug--------------------");
+            Response<List<String>> loreResponse = TitanItemInfo.getLore(itemStack);
+            if (!loreResponse.isSuccess()) return false;
+            List<String> lore = loreResponse.value();
+            Response<Boolean> isTitanToolResponse = TitanItemInfo.isTitanTool(lore);
+            sender.sendMessage("isTitanTool: " + (isTitanToolResponse.isSuccess() ? isTitanToolResponse.value() : isTitanToolResponse.error()));
+            sender.sendMessage("Contains charge lore: " + TitanItemInfo.hasCharge(lore, isTitanToolResponse));
+            sender.sendMessage("ToolColor: " + TitanItemInfo.getColor(lore));
+            sender.sendMessage("ToolStatus: " + TitanItemInfo.getStatus(lore, isTitanToolResponse));
+            sender.sendMessage("isChargedTitanTool: " + TitanItemInfo.isChargedTitanTool(lore, isTitanToolResponse));
+            sender.sendMessage("chargeLoreIndex: " + TitanItemInfo.getTitanLoreIndex(lore, TitanItemInfo.CHARGE_PREFIX, isTitanToolResponse));
+            sender.sendMessage("statusLoreIndex: " + TitanItemInfo.getTitanLoreIndex(lore, TitanItemInfo.STATUS_PREFIX, isTitanToolResponse));
+            sender.sendMessage("Get charge amount: " + TitanItemInfo.getCharge(lore, isTitanToolResponse, TitanItemInfo.hasCharge(lore,isTitanToolResponse), 39));
+            if (itemStack.getItemMeta().hasCustomModelData()) {
+                sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
+            } else {
+                sender.sendMessage("This item does not have custom model data.");
             }
-            return false;
-        }
-
-        if (!player.hasPermission("generalutils.admincommands")) {
-            player.sendMessage("No permission.");
             return true;
+        }
+        if (!(sender instanceof Player player)) {
+            return false;
         }
 
         if (args.length == 0) return false;
