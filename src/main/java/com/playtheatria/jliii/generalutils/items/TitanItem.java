@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class TitanItemInfo {
+public class TitanItem {
 
     public static final String ANCIENT_POWER_STRING = "Ancient Power";
     public static final String ANCIENT_POWER_SYMBOL = "Ω";
@@ -43,7 +43,6 @@ public class TitanItemInfo {
             add(Material.NETHERITE_SHOVEL);
         }
     };
-//    New variables for second edition titan tools
     public static final String STATUS_PREFIX = "● Status";
     public static final String CHARGE_PREFIX = "● Charge";
     public static final String INVALID_TOOL_CHECK = "Invalid call, This method is meant only for TitanTools!";
@@ -65,15 +64,17 @@ public class TitanItemInfo {
     }
 
     /**
-     * Gets the charge on a charged Titan tool or returns -1.
+     * Returns a Response Integer Object, if successful an Integer value is returned, otherwise the error is not null and can be parsed for more information.
+     * <p></p>
      * <p>
      *     This method iterates through a list of strings and checks if any match the CHARGE_PREFIX constant found in the TitanItemInfo class.
      *     Once found the method returns a parsed integer to the caller.
      * </p>
      * @param lore list of strings retrieved from the Titan tool
+     * @param isTitanToolResponse The response object from isTitanTool check.
+     * @param hasChargeResponse The response object from hasCharge check.
      * @param offset The offset of the substring since we are parsing the integer at the end of the string, the caller must handle any exception that is thrown.
-     * @throws NumberFormatException This method makes an assumption that the end of the string will contain a number value if it contains the TitanItemInfo.CHARGE_PREFIX
-     * @return Returns the Response of Integer on a Titan tool.
+     * @return Returns the Response Integer Object on a Titan tool.
      * */
 
     public static Response<Integer> getCharge(@NotNull List<String> lore, Response<Boolean> isTitanToolResponse, Response<Boolean> hasChargeResponse, int offset) {
@@ -90,7 +91,6 @@ public class TitanItemInfo {
         }
         return Response.failure("No charge lore was found in this set or lore.");
     }
-//    New variables for second edition titan tools
     public static Response<Boolean> hasCharge(List<String> loreList, Response<Boolean> isTitanToolResponse) {
         if (!isTitanToolResponse.isSuccess()) return Response.failure(INVALID_TOOL_CHECK);
         for (String lore : loreList) {
@@ -111,9 +111,22 @@ public class TitanItemInfo {
         for (String lore : loreList) {
             if (lore.contains(CHARGE_PREFIX)) return Response.success(true);
         }
-        return Response.failure("Could not find charge lore on this Titan Tool! This is an error!");
+        return Response.success(false);
     }
 
+    /**
+     * Check to see if a tool is an imbued tool.
+     * <p>
+     *     This method checks if list of lore contains the charge prefix.
+     *     It is assumed that if the charge prefix exists on a titan tool then it is not an imbued tool.
+     *     The method requires an isTitanToolResponse and must be successful before being checked for the charge prefix.
+     *     This is to ensure we are first checking if a tool is a titan tool before bothering with further checks.
+     * </p>
+     * @param loreList A list of lore taken from an item.
+     * @param isTitanToolResponse The response from isTitanTool check.
+     * @return Returns a Response Boolean type.
+     *
+     * */
     public static Response<Boolean> isImbuedTitanTool(List<String> loreList, Response<Boolean> isTitanToolResponse) {
         if (!isTitanToolResponse.isSuccess()) return Response.failure(INVALID_TOOL_CHECK);
         for (String lore : loreList) {
@@ -124,6 +137,7 @@ public class TitanItemInfo {
 
     /**
      * Checks to see if the item type matches the list of allowed types.
+     * <p></p>
      * <p>
      *     This method checks if the ItemStack provided is a material that is within the List of Material Enum provided.
      *     Once found the method returns a parsed integer to the caller.

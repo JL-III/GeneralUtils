@@ -2,9 +2,7 @@ package com.playtheatria.jliii.generalutils.commands;
 
 import com.playtheatria.jliii.generalutils.GeneralUtils;
 import com.playtheatria.jliii.generalutils.enums.MessageStatus;
-import com.playtheatria.jliii.generalutils.enums.ToolColor;
-import com.playtheatria.jliii.generalutils.enums.ToolStatus;
-import com.playtheatria.jliii.generalutils.items.TitanItemInfo;
+import com.playtheatria.jliii.generalutils.items.TitanItem;
 import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import com.playtheatria.jliii.generalutils.utils.Response;
@@ -39,18 +37,18 @@ public class AdminCommands implements CommandExecutor {
         if (args[0].equalsIgnoreCase("debug")) {
             ItemStack itemStack = !(sender instanceof Player player) ? configManager.getTestTool() : player.getInventory().getItemInMainHand();
             sender.sendMessage(ChatColor.LIGHT_PURPLE + "--------------------Debug--------------------");
-            Response<List<String>> loreResponse = TitanItemInfo.getLore(itemStack);
+            Response<List<String>> loreResponse = TitanItem.getLore(itemStack);
             if (!loreResponse.isSuccess()) return false;
             List<String> lore = loreResponse.value();
-            Response<Boolean> isTitanToolResponse = TitanItemInfo.isTitanTool(lore);
+            Response<Boolean> isTitanToolResponse = TitanItem.isTitanTool(lore);
             sender.sendMessage("isTitanTool: " + (isTitanToolResponse.isSuccess() ? isTitanToolResponse.value() : isTitanToolResponse.error()));
-            sender.sendMessage("Contains charge lore: " + TitanItemInfo.hasCharge(lore, isTitanToolResponse));
-            sender.sendMessage("ToolColor: " + TitanItemInfo.getColor(lore));
-            sender.sendMessage("ToolStatus: " + TitanItemInfo.getStatus(lore, isTitanToolResponse));
-            sender.sendMessage("isChargedTitanTool: " + TitanItemInfo.isChargedTitanTool(lore, isTitanToolResponse));
-            sender.sendMessage("chargeLoreIndex: " + TitanItemInfo.getTitanLoreIndex(lore, TitanItemInfo.CHARGE_PREFIX, isTitanToolResponse));
-            sender.sendMessage("statusLoreIndex: " + TitanItemInfo.getTitanLoreIndex(lore, TitanItemInfo.STATUS_PREFIX, isTitanToolResponse));
-            sender.sendMessage("Get charge amount: " + TitanItemInfo.getCharge(lore, isTitanToolResponse, TitanItemInfo.hasCharge(lore,isTitanToolResponse), 39));
+            sender.sendMessage("Contains charge lore: " + TitanItem.hasCharge(lore, isTitanToolResponse));
+            sender.sendMessage("ToolColor: " + TitanItem.getColor(lore));
+            sender.sendMessage("ToolStatus: " + TitanItem.getStatus(lore, isTitanToolResponse));
+            sender.sendMessage("isChargedTitanTool: " + TitanItem.isChargedTitanTool(lore, isTitanToolResponse));
+            sender.sendMessage("chargeLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.CHARGE_PREFIX, isTitanToolResponse));
+            sender.sendMessage("statusLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.STATUS_PREFIX, isTitanToolResponse));
+            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanToolResponse, TitanItem.hasCharge(lore,isTitanToolResponse), 39));
             if (itemStack.getItemMeta().hasCustomModelData()) {
                 sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
             } else {
