@@ -48,7 +48,7 @@ public class AdminCommands implements CommandExecutor {
             sender.sendMessage("isChargedTitanTool: " + TitanItem.isChargedTitanTool(lore, isTitanTool));
             sender.sendMessage("chargeLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.CHARGE_PREFIX, isTitanTool));
             sender.sendMessage("statusLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.STATUS_PREFIX, isTitanTool));
-            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanTool, TitanItem.hasCharge(lore,isTitanTool), 39));
+            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanTool, TitanItem.hasCharge(lore, isTitanTool), 39));
             if (itemStack.getItemMeta().hasCustomModelData()) {
                 sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
             } else {
