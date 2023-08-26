@@ -104,14 +104,14 @@ public class TitanItem {
      * </p>
      * @param lore list of strings retrieved from the Titan tool
      * @param isTitanTool boolean returned from an isTitanTool check.
-     * @param hasCharge boolean result from hasCharge check.
+     * @param hasChargeLore boolean result from hasChargeLore check.
      * @param offset The offset of the substring since we are parsing the integer at the end of the string, the caller must handle any exception that is thrown.
      * @return Returns the Response Integer Object on a Titan tool.
      * */
 
-    public static Response<Integer> getCharge(@NotNull List<String> lore, boolean isTitanTool, boolean hasCharge, int offset) {
+    public static Response<Integer> getCharge(@NotNull List<String> lore, boolean isTitanTool, boolean hasChargeLore, int offset) {
         if (!isTitanTool) return Response.failure(INVALID_TOOL_CHECK);
-        if (!hasCharge) return Response.failure("This item is not a charged item, this is an error!");
+        if (!hasChargeLore) return Response.failure("This item is not a charged item, this is an error!");
         for (String string : lore) {
             if (string.contains(CHARGE_PREFIX)) {
                 try {
@@ -132,7 +132,7 @@ public class TitanItem {
      * @param isTitanTool boolean returned from an isTitanTool check.
      * @return Response Boolean Object containing the true or false response or an error value.
      * */
-    public static boolean hasCharge(List<String> loreList, boolean isTitanTool) {
+    public static boolean hasChargeLore(List<String> loreList, boolean isTitanTool) {
         if (!isTitanTool) return false;
         for (String lore : loreList) {
             if (lore.contains(CHARGE_PREFIX)) return true;
