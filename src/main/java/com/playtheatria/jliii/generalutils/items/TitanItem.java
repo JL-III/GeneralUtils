@@ -77,7 +77,7 @@ public class TitanItem {
      * @see ToolColor ToolColor for information on the ToolColor.
      * */
     public static String generateStatusLore(@NotNull ToolColor color, @NotNull ToolStatus status) {
-        return color.getDarkColorCode() + " " + STATUS_PREFIX + color.getBrightColorCode() + " " + status.getString();
+        return color.getDarkColorCode() + "  " + STATUS_PREFIX + color.getBrightColorCode() + " " + status.getString();
     }
 
     /**
