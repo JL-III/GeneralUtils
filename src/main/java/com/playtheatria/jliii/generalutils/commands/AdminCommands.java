@@ -40,15 +40,15 @@ public class AdminCommands implements CommandExecutor {
             Response<List<String>> loreResponse = TitanItem.getLore(itemStack);
             if (!loreResponse.isSuccess()) return false;
             List<String> lore = loreResponse.value();
-            Response<Boolean> isTitanToolResponse = TitanItem.isTitanTool(lore);
-            sender.sendMessage("isTitanTool: " + (isTitanToolResponse.isSuccess() ? isTitanToolResponse.value() : isTitanToolResponse.error()));
-            sender.sendMessage("Contains charge lore: " + TitanItem.hasCharge(lore, isTitanToolResponse));
+            boolean isTitanTool = TitanItem.isTitanTool(lore);
+            sender.sendMessage("isTitanTool: " + isTitanTool);
+            sender.sendMessage("Contains charge lore: " + TitanItem.hasCharge(lore, isTitanTool));
             sender.sendMessage("ToolColor: " + TitanItem.getColor(lore));
-            sender.sendMessage("ToolStatus: " + TitanItem.getStatus(lore, isTitanToolResponse));
-            sender.sendMessage("isChargedTitanTool: " + TitanItem.isChargedTitanTool(lore, isTitanToolResponse));
-            sender.sendMessage("chargeLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.CHARGE_PREFIX, isTitanToolResponse));
-            sender.sendMessage("statusLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.STATUS_PREFIX, isTitanToolResponse));
-            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanToolResponse, TitanItem.hasCharge(lore,isTitanToolResponse), 39));
+            sender.sendMessage("ToolStatus: " + TitanItem.getStatus(lore, isTitanTool));
+            sender.sendMessage("isChargedTitanTool: " + TitanItem.isChargedTitanTool(lore, isTitanTool));
+            sender.sendMessage("chargeLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.CHARGE_PREFIX, isTitanTool));
+            sender.sendMessage("statusLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.STATUS_PREFIX, isTitanTool));
+            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanTool, TitanItem.hasCharge(lore,isTitanTool), 39));
             if (itemStack.getItemMeta().hasCustomModelData()) {
                 sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
             } else {
