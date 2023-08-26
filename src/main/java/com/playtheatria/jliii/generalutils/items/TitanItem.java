@@ -104,14 +104,14 @@ public class TitanItem {
      * </p>
      * @param lore list of strings retrieved from the Titan tool
      * @param isTitanTool boolean returned from an isTitanTool check.
-     * @param hasChargeResponse The response object from hasCharge check.
+     * @param hasCharge boolean result from hasCharge check.
      * @param offset The offset of the substring since we are parsing the integer at the end of the string, the caller must handle any exception that is thrown.
      * @return Returns the Response Integer Object on a Titan tool.
      * */
 
-    public static Response<Integer> getCharge(@NotNull List<String> lore, boolean isTitanTool, Response<Boolean> hasChargeResponse, int offset) {
+    public static Response<Integer> getCharge(@NotNull List<String> lore, boolean isTitanTool, boolean hasCharge, int offset) {
         if (!isTitanTool) return Response.failure(INVALID_TOOL_CHECK);
-        if (!hasChargeResponse.isSuccess()) return Response.failure("This item is not a charged item, this is an error!");
+        if (!hasCharge) return Response.failure("This item is not a charged item, this is an error!");
         for (String string : lore) {
             if (string.contains(CHARGE_PREFIX)) {
                 try {
@@ -132,12 +132,12 @@ public class TitanItem {
      * @param isTitanTool boolean returned from an isTitanTool check.
      * @return Response Boolean Object containing the true or false response or an error value.
      * */
-    public static Response<Boolean> hasCharge(List<String> loreList, boolean isTitanTool) {
-        if (!isTitanTool) return Response.failure(INVALID_TOOL_CHECK);
+    public static boolean hasCharge(List<String> loreList, boolean isTitanTool) {
+        if (!isTitanTool) return false;
         for (String lore : loreList) {
-            if (lore.contains(CHARGE_PREFIX)) return Response.success(true);
+            if (lore.contains(CHARGE_PREFIX)) return true;
         }
-        return Response.success(false);
+        return false;
     }
 
     public static boolean isTitanTool(List<String> loreList){
@@ -147,12 +147,12 @@ public class TitanItem {
         return false;
     }
 
-    public static Response<Boolean> isChargedTitanTool(List<String> loreList, boolean isTitanTool) {
-        if (!isTitanTool) return Response.failure(INVALID_TOOL_CHECK);
+    public static boolean isChargedTitanTool(List<String> loreList, boolean isTitanTool) {
+        if (!isTitanTool) return false;
         for (String lore : loreList) {
-            if (lore.contains(CHARGE_PREFIX)) return Response.success(true);
+            if (lore.contains(CHARGE_PREFIX)) return true;
         }
-        return Response.success(false);
+        return false;
     }
 
     /**
@@ -168,12 +168,12 @@ public class TitanItem {
      * @return Returns a Response Boolean type.
      *
      * */
-    public static Response<Boolean> isImbuedTitanTool(List<String> loreList, boolean isTitanTool) {
-        if (!isTitanTool) return Response.failure(INVALID_TOOL_CHECK);
+    public static boolean isImbuedTitanTool(List<String> loreList, boolean isTitanTool) {
+        if (!isTitanTool) return false;
         for (String lore : loreList) {
-            if (lore.contains(CHARGE_PREFIX)) return Response.success(false);
+            if (lore.contains(CHARGE_PREFIX)) return false;
         }
-        return Response.success(true);
+        return true;
     }
 
     /**
@@ -266,8 +266,8 @@ public class TitanItem {
         return Response.failure("Could not retrieve a tool status.");
     }
 
-    public static boolean isTitanType(ItemStack item, List<Material> ALLOWED_TYPES, Response<Boolean> isTitanToolResponse) {
-        return isTitanToolResponse.isSuccess() && isAllowedType(item, ALLOWED_TYPES);
+    public static boolean isTitanType(ItemStack item, List<Material> ALLOWED_TYPES, boolean isTitanTool) {
+        return isTitanTool && isAllowedType(item, ALLOWED_TYPES);
     }
 
 }
