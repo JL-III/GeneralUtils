@@ -42,13 +42,13 @@ public class AdminCommands implements CommandExecutor {
             List<String> lore = loreResponse.value();
             boolean isTitanTool = TitanItem.isTitanTool(lore);
             sender.sendMessage("isTitanTool: " + isTitanTool);
-            sender.sendMessage("Contains charge lore: " + TitanItem.hasCharge(lore, isTitanTool));
+            sender.sendMessage("Contains charge lore: " + TitanItem.hasChargeLore(lore, isTitanTool));
             sender.sendMessage("ToolColor: " + TitanItem.getColor(lore));
             sender.sendMessage("ToolStatus: " + TitanItem.getStatus(lore, isTitanTool));
             sender.sendMessage("isChargedTitanTool: " + TitanItem.isChargedTitanTool(lore, isTitanTool));
             sender.sendMessage("chargeLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.CHARGE_PREFIX, isTitanTool));
             sender.sendMessage("statusLoreIndex: " + TitanItem.getTitanLoreIndex(lore, TitanItem.STATUS_PREFIX, isTitanTool));
-            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanTool, TitanItem.hasCharge(lore, isTitanTool), 39));
+            sender.sendMessage("Get charge amount: " + TitanItem.getCharge(lore, isTitanTool, TitanItem.hasChargeLore(lore, isTitanTool), 39));
             if (itemStack.getItemMeta().hasCustomModelData()) {
                 sender.sendMessage("Current custom model data: " + itemStack.getItemMeta().getCustomModelData());
             } else {
