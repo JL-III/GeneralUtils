@@ -1,7 +1,6 @@
 package com.playtheatria.jliii.generalutils;
 
 import com.playtheatria.jliii.generalutils.managers.CommandManager;
-import com.playtheatria.jliii.generalutils.managers.ConfigManager;
 import com.playtheatria.jliii.generalutils.utils.CustomLogger;
 import com.playtheatria.jliii.generalutils.utils.PlayerMessenger;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -9,21 +8,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
-import java.io.ObjectInputFilter;
 import java.util.Properties;
 
 public final class GeneralUtils extends JavaPlugin {
 
     private CustomLogger customLogger;
-    private static ConfigManager configManager;
 
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
         PlayerMessenger playerMessenger = new PlayerMessenger();
         customLogger = new CustomLogger(getName(), NamedTextColor.GREEN, NamedTextColor.YELLOW);
-        configManager = new ConfigManager(this);
-        new CommandManager(this, configManager, customLogger, playerMessenger);
+        new CommandManager(this, customLogger, playerMessenger);
     }
 
     public CustomLogger getCustomLogger() {
@@ -43,10 +39,6 @@ public final class GeneralUtils extends JavaPlugin {
         } else {
             return ChatColor.RED + "No version information was found";
         }
-    }
-
-    public static ConfigManager getConfigManager() {
-        return configManager;
     }
 
 }
