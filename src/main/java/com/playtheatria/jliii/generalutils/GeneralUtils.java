@@ -9,7 +9,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
-import java.io.ObjectInputFilter;
 import java.util.Properties;
 
 public final class GeneralUtils extends JavaPlugin {

@@ -336,9 +336,9 @@ titanpickbluefortune:
       - '{"extra":[{"color":"dark_gray","text":"Fortune"},{"color":"#6D5EFF","text":" V"}],"text":""}'
       - '{"extra":[{"color":"dark_gray","text":"Unbreakable"}],"text":""}'
       - '{"extra":[{"color":"gray","text":""}],"text":""}'
-      - '{"extra":[{"color":"#060094","text":"Ancient Power"},{"color":"#6D5EFF","text":" Ω"}],"text":""}'
-      - '{"extra":[{"color":"#060094","text":"  ● Charge"},{"color":"#6D5EFF","text":" 0"}],"text":""}'
-      - '{"extra":[{"color":"#060094","text":"  ● Status"},{"color":"#6D5EFF","text":" OFF"}],"text":""}'
+      - '{"extra":[{"color":"#3121B4","text":"Ancient Power"},{"color":"#6D5EFF","text":" Ω"}],"text":""}'
+      - '{"extra":[{"color":"#3121B4","text":"  ● Charge"},{"color":"#6D5EFF","text":" 0"}],"text":""}'
+      - '{"extra":[{"color":"#3121B4","text":"  ● Status"},{"color":"#6D5EFF","text":" OFF"}],"text":""}'
       - '{"extra":[{"color":"gray","text":""}],"text":""}'
       - '{"extra":[
     {"color":"#060094","text":"A"},
