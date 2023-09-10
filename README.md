@@ -40,4 +40,4 @@ For Maven, add the following in your `pom.xml`:
     <artifactId>GeneralUtils</artifactId>
     <version>ReleaseVersion</version>
 </dependency>
-```# TheatriaResource
+```
