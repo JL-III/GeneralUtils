@@ -19,11 +19,18 @@ public class DiademPlayerDamageEvent extends Event {
 
     private final Player player;
 
-    public DiademPlayerDamageEvent(Player player) {
+    private final double damage;
+
+    public DiademPlayerDamageEvent(Player player, double damage) {
         this.player = player;
+        this.damage = damage;
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public double getDamage() {
+        return damage;
     }
 }
