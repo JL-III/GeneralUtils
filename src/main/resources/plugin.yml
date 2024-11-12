@@ -1,9 +1,4 @@
 name: GeneralUtils
 version: '${project.version}'
 main: com.playtheatria.jliii.generalutils.GeneralUtils
-api-version: 1.19
-commands:
-  generalutils:
-    description: GeneralUtils command
-    usage: /<command> tasks, /<command> version
-    aliases: [gu]
+api-version: 1.21
