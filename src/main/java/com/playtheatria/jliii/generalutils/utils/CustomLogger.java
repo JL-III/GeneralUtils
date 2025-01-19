@@ -1,6 +1,6 @@
 package com.playtheatria.jliii.generalutils.utils;
 
-import com.playtheatria.jliii.generalutils.config.ConfigManager;
+import com.playtheatria.jliii.generalutils.config.AbstractConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -8,11 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * To construct a {@link CustomLogger} you must provide a {@link ConfigManager} instance and 3 string HexColorCodes formatted as such {@code "#f5428a"}
+ * To construct a {@link CustomLogger} you must provide a {@link AbstractConfigManager} instance and 3 string HexColorCodes formatted as such {@code "#f5428a"}
  * @param <T> The JavaPlugin the logger belongs to.
  * @param <C> The ConfigManager instance for the JavaPlugin.
  */
-public class CustomLogger<T extends JavaPlugin, C extends ConfigManager<T>> {
+public class CustomLogger<T extends JavaPlugin, C extends AbstractConfigManager<T>> {
     private final C configManager;
     private final String bracketsColor;
     private final String pluginNameColor;

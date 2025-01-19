@@ -2,11 +2,11 @@ package com.playtheatria.jliii.generalutils.config;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public abstract class ConfigManager<T extends JavaPlugin> {
+public abstract class AbstractConfigManager<T extends JavaPlugin> {
     private final T plugin;
     public boolean debug;
 
-    public ConfigManager(T plugin) {
+    public AbstractConfigManager(T plugin) {
         this.plugin = plugin;
         loadConfig();
     }
