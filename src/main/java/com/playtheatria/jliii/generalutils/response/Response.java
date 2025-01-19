@@ -1,4 +1,4 @@
-package com.playtheatria.jliii.generalutils.utils;
+package com.playtheatria.jliii.generalutils.response;
 
 public record Response<T>(T value, String error) {
 

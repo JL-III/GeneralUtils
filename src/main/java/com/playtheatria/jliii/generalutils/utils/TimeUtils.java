@@ -1,4 +1,4 @@
-package com.playtheatria.jliii.generalutils.time;
+package com.playtheatria.jliii.generalutils.utils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
 
-public class Utils {
+public class TimeUtils {
     public static final ZoneId timeZone = ZoneId.of("America/New_York");
     public static boolean isNewDay(LocalDateTime timestamp, LocalDateTime now) {
         ZonedDateTime zonedTimestamp = timestamp.atZone(timeZone);
