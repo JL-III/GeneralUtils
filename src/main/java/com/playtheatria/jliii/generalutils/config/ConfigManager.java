@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public abstract class ConfigManager<T extends JavaPlugin> {
     private final T plugin;
-    private boolean debug;
+    public boolean debug;
 
     public ConfigManager(T plugin) {
         this.plugin = plugin;
