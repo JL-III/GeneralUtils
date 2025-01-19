@@ -3,7 +3,7 @@ package com.playtheatria.jliii.generalutils.config;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public abstract class AbstractConfigManager<T extends JavaPlugin> {
-    private final T plugin;
+    public final T plugin;
     public boolean debug;
 
     public AbstractConfigManager(T plugin) {
