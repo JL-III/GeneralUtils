@@ -5,7 +5,11 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * To construct a {@link CustomLogger} you must provide a {@link AbstractConfigManager} instance and 3 string HexColorCodes formatted as such {@code "#f5428a"}
@@ -53,5 +57,14 @@ public class CustomLogger<T extends JavaPlugin, C extends AbstractConfigManager<
 
     private String validateHexColor(String color) {
         return color.matches("^#([A-Fa-f0-9]{6})$") ? color : "#FFFFFF";  // Fallback to white
+    }
+
+    public String getGeneralUtilsVersionFromConfig(InputStream inputStream) {
+        if (inputStream == null) {
+            sendFormattedLog("Could not load plugin.yml");
+            return "Unknown";
+        }
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(new InputStreamReader(inputStream));
+        return config.getString("general-utils-version", "Unknown");
     }
 }
