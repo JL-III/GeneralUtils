@@ -59,12 +59,12 @@ public class CustomLogger<T extends JavaPlugin, C extends AbstractConfigManager<
         return color.matches("^#([A-Fa-f0-9]{6})$") ? color : "#FFFFFF";  // Fallback to white
     }
 
-    public String getGeneralUtilsVersionFromConfig(InputStream inputStream) {
+    public String getGeneralUtilsVersionFromConfig(InputStream inputStream, String key) {
         if (inputStream == null) {
             sendFormattedLog("Could not load plugin.yml");
             return "Unknown";
         }
         YamlConfiguration config = YamlConfiguration.loadConfiguration(new InputStreamReader(inputStream));
-        return config.getString("general-utils-version", "Unknown");
+        return config.getString(key, "Unknown");
     }
 }
